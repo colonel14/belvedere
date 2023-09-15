@@ -10,9 +10,14 @@ export default function Home() {
     <main>
       <PageHero imageSrc="/hero-1.jpg" title="Academic" color="#C33734" />
       <Section />
-      <div className="relative w-full h-[495px]">
-        <Image src="/footer-img.jpg" fill alt="footer image" />
-      </div>
+      <Image
+        src="/footer-img.jpg"
+        width={100}
+        height={100}
+        className="w-full max-h-[495px]"
+        unoptimized
+        alt="footer image"
+      />
       <KnowMore />
     </main>
   );

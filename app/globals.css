@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Helvetica Roman";
-  src: url("../fonts/HelveticaNeue55Roman.otf") format("opentype");
+  font-family: "Helvetica";
+  src: url("../fonts/Helvetica Roman.ttf");
 }
 @font-face {
   font-family: "Palatino";

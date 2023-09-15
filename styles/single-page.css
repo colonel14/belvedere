@@ -28,7 +28,7 @@
   font-weight: 400;
   line-height: 38px;
   color: #0f213f;
-  font-family: "Helvetica Roman";
+  font-family: "Helvetica";
   margin-bottom: 4.5rem;
 }
 .app__section {
@@ -419,6 +419,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .app__hero {
+    margin-bottom: 5rem;
+  }
   .app__hero-image {
     aspect-ratio: 15/8;
   }
@@ -441,7 +444,7 @@
 
 @media screen and (max-width: 600px) {
   .app__hero-image {
-    aspect-ratio: 15/10;
+    aspect-ratio: 15/11;
   }
   .app__hero-title {
     font-size: 40px;
@@ -473,7 +476,9 @@
   .features__heading {
     width: 100%;
   }
-
+  .feature__box .feature__box-text {
+    width: 300px;
+  }
   .know__more-title {
     font-size: 34px;
   }
