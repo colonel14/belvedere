@@ -22,6 +22,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.jsx", ".next/types/**/*.ts", "components/*.jsx", "app/(client)/services/page.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.jsx",
+    ".next/types/**/*.ts",
+    "components/*.jsx",
+    "app/(client)/services/page.jsx",
+    "tina/config.ts"
+  ],
   "exclude": ["node_modules"]
 }

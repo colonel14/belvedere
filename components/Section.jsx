@@ -2,37 +2,53 @@
 
 import Link from "next/link";
 import Heading from "./Heading";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField } from "tinacms/dist/react";
 
-function Section() {
+function Section({ data }) {
+  console.log(data);
   return (
     <section className="app__section">
       <div className="container">
         <div className="app__section-inner">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
             <div className="col-span-8 app__section-left">
-              <Heading
+              <div
+                className="section__heading"
+                data-tina-field={tinaField(data.page, "heading")}
+              >
+                <TinaMarkdown
+                  content={data.page.heading}
+                  components={{
+                    h4: (props) => (
+                      <h4 className="heading__subtitle" {...props} />
+                    ),
+                    h3: (props) => <h3 className="heading__title" {...props} />,
+                  }}
+                />
+              </div>
+              {/* <Heading
                 title="Learning-Centered Educational Institution."
                 subtitle="Belvedere School, Cairo is a"
-              />
-              <p className="page__text">
-                At Belvedere School, Cairo pupils take ownership of what they
-                learn by focusing on how the new knowledge solves a problem or
-                adds value, instead of simply being given information and
-                waiting for the correct answer. This preps them for their
-                ever-changing future. Many of the jobs which our young people
-                will be applying for in years to come have not even been
-                invented yet.
-              </p>
-              <p className="page__text">
-                We believe the ability to develop critical thinking skills and
-                thinking flexibility, is vital
-              </p>
+              /> */}
+
+              <div data-tina-field={tinaField(data.page, "body")}>
+                <TinaMarkdown
+                  content={data.page.body}
+                  components={{
+                    h1: (props) => <h1 {...props} />,
+                    h2: (props) => <h2 {...props} />,
+                    h3: (props) => <h3 {...props} />,
+                    p: (props) => <p className="page__text" {...props} />,
+                  }}
+                />
+              </div>
 
               <div id="features">
                 <div className="features__heading">
                   <h5 className="features__title">
-                    learner-centered education focuses on 3 key aspects about
-                    the learner
+                    learner-centered education focuses on 3 key
+                    <br /> aspects about the learner
                   </h5>
                   <span className="features__subtitle">
                     Each learner is seen as
@@ -42,19 +58,20 @@ function Section() {
                   <div className="feature__box">
                     <span className="feature__box-num">1</span>
                     <p className="feature__box-text">
-                      Being unique in meaningful ways
+                      Being unique <br /> in meaningful <br />
+                      ways
                     </p>
                   </div>
                   <div className="feature__box">
                     <span className="feature__box-num">2</span>
                     <p className="feature__box-text">
-                      Having unbounded potential.
+                      Having <br /> unbounded <br /> potential.
                     </p>
                   </div>
                   <div className="feature__box">
                     <span className="feature__box-num">3</span>
                     <p className="feature__box-text">
-                      Having an innate desire to learn
+                      Having an <br /> innate desire <br /> to learn
                     </p>
                   </div>
                 </div>
@@ -166,15 +183,16 @@ function Section() {
               </div>
               <div className="page__info-foursquare">
                 <div className="page__info-foursquare_palatino">
-                  We encourage a love of learning through
+                  We encourage a <br /> love of learning <br /> through
                 </div>
                 <div className="page__info-foursquare_poppins">
-                  engaging, exciting, and challenging coursework.
+                  engaging, <br /> exciting, and <br /> challenging <br />{" "}
+                  coursework.
                 </div>
               </div>
               <div className="page__info-foursquare_sec">
                 <div className="page__info-foursquare_poppins">
-                  Life-long Learning for the Real World
+                  Life-long <br /> Learning for <br /> the Real World
                 </div>
               </div>
             </div>

@@ -121,7 +121,13 @@ const Navbar = () => {
       <div className="container">
         <div className="app__navbar-inner">
           <div className="app__navbar-logo">
-            <Image src="/logo.png" width={150} height={70} alt="logo" />
+            <Image
+              src="/logo.svg"
+              width={150}
+              height={70}
+              alt="logo"
+              unoptimized
+            />
           </div>
           <ul className="app__navbar-links">
             {navigation.map((item, idx) => (

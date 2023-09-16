@@ -22,7 +22,7 @@
   justify-content: flex-end;
   align-items: center;
   list-style: none;
-  gap: 62px;
+  gap: 30px;
 }
 
 .app__navbar-links li {
@@ -88,8 +88,8 @@
   top: 4px;
   right: 0;
   color: #9fabb7;
-  height: 42px;
-  width: 42px;
+  height: 30px;
+  width: 30px;
 }
 .app__navbar-menuicon {
   width: 30px;
@@ -110,8 +110,8 @@
 .app__navbar-smallscreen_overlay .ovarlay__close {
   position: absolute;
   right: 2rem;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   color: #0f213f;
   top: 1.5rem;
   cursor: pointer;
@@ -124,9 +124,9 @@
 }
 .app__navbar-smallscreen-links > li {
   color: #0f213f;
-  margin: 2rem;
+  margin: 1rem 2rem;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: left;
   position: relative;
   text-transform: capitalize;
@@ -154,10 +154,6 @@
     height: 346px;
     background-color: #fff;
     content: "";
-    -webkit-transition: opacity 0.3s, visibility 0.3s;
-    -moz-transition: opacity 0.3s, visibility 0.3s;
-    -ms-transition: opacity 0.3s, visibility 0.3s;
-    -o-transition: opacity 0.3s, visibility 0.3s;
     transition: opacity 0.3s, visibility 0.3s;
     opacity: 0;
     visibility: hidden;
@@ -192,13 +188,13 @@
     overflow: scroll;
   }
   .menu__sub-link {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     white-space: normal;
     margin-bottom: 21px;
   }
   .menu__prev-link {
     color: #0f213f;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 700;
     position: relative;
     display: inline-block;
@@ -218,22 +214,11 @@
   }
 }
 @media screen and (max-width: 650px) {
-  .app__navbar-smallscreen_overlay .ovarlay__close {
-    width: 30px;
-    height: 30px;
-    right: 1rem;
-  }
-  .app__navbar-smallscreen-links > li {
-    font-size: 1.5rem;
-    margin: 1rem;
-  }
   .next__level-arrow {
     width: 30px;
     height: 30px;
   }
-  .menu__prev-link {
-    font-size: 1.7rem;
-  }
+
   .menu__sub-link {
     font-size: 1.3rem;
     margin-bottom: 14px;

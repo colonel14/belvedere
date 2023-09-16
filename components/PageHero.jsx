@@ -2,21 +2,36 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { tinaField } from "tinacms/dist/react";
 
-
-function PageHero({imageSrc, title, color}) {
+function PageHero({ imageSrc, color, data, query }) {
+  console.log(data.page.heroImg);
   return (
     <div className="app__hero">
-        <div className="container">
-            <div className="app__hero-wrapper">
-                <div className="app__hero-image">
-                    <Image src={imageSrc} fill alt="hero image"/>
-                </div>
-                <h2 className={cn(`app__hero-title bg-[${color}]`)}>{title}</h2>
-            </div>
+      <div className="container">
+        <div className="app__hero-wrapper">
+          <div
+            className="app__hero-image"
+            data-tina-field={tinaField(data.page, "heroImg")}
+          >
+            <Image
+              src={data.page.heroImg || "/hero-1.jpg"}
+              fill
+              alt="hero image"
+              unoptimized
+              className="object-cover"
+            />
+          </div>
+          <h2
+            className={cn(`app__hero-title bg-[${color}]`)}
+            data-tina-field={tinaField(data.page, "title")}
+          >
+            {data.page.title}
+          </h2>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default PageHero
+export default PageHero;
