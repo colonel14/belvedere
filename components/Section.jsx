@@ -4,47 +4,60 @@ import Link from "next/link";
 import Heading from "./Heading";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
+import { useEffect } from "react";
+import AOS from "aos";
 
 function Section({ data }) {
-  console.log(data);
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <section className="app__section">
       <div className="container">
         <div className="app__section-inner">
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
             <div className="col-span-8 app__section-left">
-              <div
-                className="section__heading"
-                data-tina-field={tinaField(data.page, "heading")}
-              >
-                <TinaMarkdown
-                  content={data.page.heading}
-                  components={{
-                    h4: (props) => (
-                      <h4 className="heading__subtitle" {...props} />
-                    ),
-                    h3: (props) => <h3 className="heading__title" {...props} />,
-                  }}
-                />
-              </div>
-              {/* <Heading
+              <div data-aos="fade-animation" data-aos-duration="700">
+                <div
+                  className="section__heading"
+                  data-tina-field={tinaField(data.page, "heading")}
+                >
+                  <TinaMarkdown
+                    content={data.page.heading}
+                    components={{
+                      h4: (props) => (
+                        <h4 className="heading__subtitle" {...props} />
+                      ),
+                      h3: (props) => (
+                        <h3 className="heading__title" {...props} />
+                      ),
+                    }}
+                  />
+                </div>
+                {/* <Heading
                 title="Learning-Centered Educational Institution."
                 subtitle="Belvedere School, Cairo is a"
               /> */}
 
-              <div data-tina-field={tinaField(data.page, "body")}>
-                <TinaMarkdown
-                  content={data.page.body}
-                  components={{
-                    h1: (props) => <h1 {...props} />,
-                    h2: (props) => <h2 {...props} />,
-                    h3: (props) => <h3 {...props} />,
-                    p: (props) => <p className="page__text" {...props} />,
-                  }}
-                />
+                <div data-tina-field={tinaField(data.page, "body")}>
+                  <TinaMarkdown
+                    content={data.page.body}
+                    components={{
+                      h1: (props) => <h1 {...props} />,
+                      h2: (props) => <h2 {...props} />,
+                      h3: (props) => <h3 {...props} />,
+                      p: (props) => <p className="page__text" {...props} />,
+                    }}
+                  />
+                </div>
               </div>
 
-              <div id="features">
+              <div
+                id="features"
+                data-aos="fade-animation"
+                data-aos-duration="700"
+              >
                 <div className="features__heading">
                   <h5 className="features__title">
                     learner-centered education focuses on 3 key
@@ -76,7 +89,11 @@ function Section({ data }) {
                   </div>
                 </div>
               </div>
-              <div id="cricles__map">
+              <div
+                id="cricles__map"
+                data-aos="fade-animation"
+                data-aos-duration="700"
+              >
                 <p className="palatino__text">Learners Centred Principles</p>
                 <div className="circles__list">
                   <div className="circles__row-1">
@@ -110,8 +127,8 @@ function Section({ data }) {
                   <div className="circles__row-2">
                     <div className="map__circle">
                       <p>
-                        <span className="font-bold">Coach</span> learners to
-                        expert performance
+                        <span className="font-bold">Coach</span> learners <br />{" "}
+                        to expert performance
                       </p>
                     </div>
                     <div className="map__circle">

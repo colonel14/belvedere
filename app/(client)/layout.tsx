@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import "../globals.css";
 import "@/styles/navbar.css";
 import type { Metadata } from "next";
+import "aos/dist/aos.css";
 
 export const metadata: Metadata = {
   title: "Belvedere School",

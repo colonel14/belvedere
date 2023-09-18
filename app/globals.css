@@ -92,7 +92,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 73rem;
+  max-width: 90rem;
   margin: 0 auto;
   position: relative;
 }
@@ -127,5 +127,22 @@ body {
   100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+
+[data-aos="fade-animation"] {
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &.aos-animate {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: 768px) {
+    transform: translateY(20px);
+
+    &.aos-animate {
+      transform: translateX(0);
+    }
   }
 }

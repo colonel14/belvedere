@@ -1,6 +1,6 @@
 .app__navbar {
   position: relative;
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
   z-index: 100;
 }
 
@@ -26,12 +26,13 @@
 }
 
 .app__navbar-links li {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: #0f213f;
-  text-transform: uppercase;
+  text-transform: capitalize;
   position: relative;
   cursor: pointer;
+  line-height: 18px;
 }
 .app__navbar-links li:hover {
   color: #2b52aa;
@@ -56,7 +57,24 @@
 }
 .menu__column-title {
   font-weight: 600 !important;
+  margin-bottom: 8px;
 }
+.menu__column li:hover {
+  text-decoration: underline;
+}
+/* .menu__column li:hover:after {
+  width: 100%;
+}
+.menu__column li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #0f213f;
+  transition: all 0.4s;
+} */
 .menu__sub ul {
   width: 235px;
 }
@@ -71,7 +89,7 @@
 }
 .app__navbar-bottom_menu li a {
   color: #2b52aa;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 22px;
   text-transform: none;
@@ -136,7 +154,7 @@
 }
 @media screen and (max-width: 2000px) {
   .app__navbar-logo img {
-    width: 210px;
+    width: 150px;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -151,7 +169,7 @@
     left: 0;
     z-index: -1;
     width: 100%;
-    height: 346px;
+    height: 285px;
     background-color: #fff;
     content: "";
     transition: opacity 0.3s, visibility 0.3s;

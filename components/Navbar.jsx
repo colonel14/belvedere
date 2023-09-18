@@ -57,10 +57,6 @@ const Navbar = () => {
             href: "/",
           },
           {
-            title: "Academic",
-            href: "/",
-          },
-          {
             title: "Primary Stage",
             href: "/",
           },
@@ -112,6 +108,10 @@ const Navbar = () => {
     },
     {
       title: "Portals",
+      href: "/",
+    },
+    {
+      title: "Contact Us",
       href: "/",
     },
   ];

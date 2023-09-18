@@ -23,7 +23,7 @@ function HomeComponent(props) {
         src="/footer-img.jpg"
         width={100}
         height={100}
-        className="w-full max-h-[495px]"
+        className="w-full h-[245px] lg:h-[495px] object-cover"
         unoptimized
         alt="footer image"
       />

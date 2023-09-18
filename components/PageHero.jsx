@@ -3,9 +3,14 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { tinaField } from "tinacms/dist/react";
+import AOS from "aos";
+import { useEffect } from "react";
 
 function PageHero({ imageSrc, color, data, query }) {
-  console.log(data.page.heroImg);
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div className="app__hero">
       <div className="container">
