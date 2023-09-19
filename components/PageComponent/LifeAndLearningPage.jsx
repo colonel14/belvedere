@@ -43,7 +43,7 @@ function LifeAndLearningPage() {
   return (
     <main>
       <PageHero
-        imageSrc="/hero-1.jpg"
+        imageSrc="/life-learning-hero.jpg"
         title="Life & Learning"
         color="#0F213F"
       />
