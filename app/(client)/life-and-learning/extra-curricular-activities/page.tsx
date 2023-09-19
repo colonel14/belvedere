@@ -8,7 +8,7 @@ const ExtracurricularActivitiesPage = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "A Broad Curriculum",
+  title: "Extra-curricular Activities",
 };
 export default async function LifeAndLearning() {
   return (

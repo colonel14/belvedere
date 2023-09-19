@@ -53,19 +53,29 @@ function PageLinksList() {
 
               <ul>
                 <li>
-                  <Link href="/">Sports</Link>
+                  <Link href="/life-and-learning/extra-curricular-activities/sports">
+                    Sports
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Music</Link>
+                  <Link href="/life-and-learning/extra-curricular-activities/music">
+                    Music
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Drama</Link>
+                  <Link href="/life-and-learning/extra-curricular-activities/drama">
+                    Drama
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Art & Design</Link>
+                  <Link href="/life-and-learning/extra-curricular-activities/art-and-design">
+                    Art & Design
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Trips</Link>
+                  <Link href="/life-and-learning/extra-curricular-activities/trips">
+                    Trips
+                  </Link>
                 </li>
               </ul>
             </li>
