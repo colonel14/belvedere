@@ -5,6 +5,22 @@ import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
+import { lifeLearningLinks } from "@/data";
+
+const linksList = [
+  {
+    name: "Teaching Methodology",
+    href: "/life-and-learning/teaching-methodology",
+  },
+  {
+    name: "Academic",
+    href: "/life-and-learning/academic",
+  },
+  {
+    name: "Extra-curricular Activities",
+    href: "/life-and-learning/extra-curricular-activities",
+  },
+];
 
 function BroadCurriculumPage() {
   const list = [
@@ -13,7 +29,9 @@ function BroadCurriculumPage() {
       grade: "FSI & FSII",
       title: (
         <>
-          <span className="card__link-title-underline !after:bg-[#FFB842]">Early Years</span>{" "}
+          <span className="card__link-title-underline !after:bg-[#FFB842]">
+            Early Years
+          </span>{" "}
           Foundation Stage overview
         </>
       ),
@@ -21,22 +39,24 @@ function BroadCurriculumPage() {
         "The Early Years Foundation Stage (EYFS) sets the standards that all must meet to ensure that children learn and develop well and are kept healthy and safe. We understand and value the importance of learning through educational play...",
       href: "/life-and-learning/academic",
       color: "#FFB842",
-      titleColor: "#0F213F"
+      titleColor: "#0F213F",
     },
     {
       image: "/card-img-6.jpg",
       grade: "Y1 to Y5",
       title: (
         <>
-          <span className="card__link-title-underline !after:bg-[#65D2DE]">Primary</span> <br />{" "}
-          Stage
+          <span className="card__link-title-underline !after:bg-[#65D2DE]">
+            Primary
+          </span>{" "}
+          <br /> Stage
         </>
       ),
       description:
         "We believe in the concept of lifelong learning, and in the belief that we are laying the foundations for learning throughout life in terms of skills, strategies and attitudes. We maintain that learning should be a rewarding and an enjoyable experience for everyone. Through our teaching, we equip children with the skills and a broad range of knowledge and understanding that is",
       href: "/life-and-learning/academic",
       color: "#65D2DE",
-      titleColor: "#0F213F"
+      titleColor: "#0F213F",
     },
     {
       image: "/card-img-7.jpg",
@@ -50,7 +70,7 @@ function BroadCurriculumPage() {
         "The Secondary School curriculum is organised into Key Stage 3, Key Stage 4, and Sixth Form/ IBDP, the latter offering a blend of core and optional subjects. All lessons are taught by highly qualified subject experts...",
       href: "/life-and-learning/academic",
       color: "#6AC45B",
-      titleColor: "#0F213F"
+      titleColor: "#0F213F",
     },
   ];
   return (
@@ -81,7 +101,7 @@ function BroadCurriculumPage() {
                 </div>
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>
@@ -95,7 +115,7 @@ function BroadCurriculumPage() {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

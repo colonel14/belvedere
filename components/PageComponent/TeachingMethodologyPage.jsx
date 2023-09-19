@@ -6,6 +6,22 @@ import Heading from "../Heading";
 import GridList from "../GridList";
 import Image from "next/image";
 import KnowMore from "../KnowMore";
+import { lifeLearningLinks } from "@/data";
+
+const linksList = [
+  {
+    name: "A Broad Curriculum",
+    href: "/life-and-learning/broad-curriculum",
+  },
+  {
+    name: "Academic",
+    href: "/life-and-learning/academic",
+  },
+  {
+    name: "Extra-curricular Activities",
+    href: "/life-and-learning/extra-curricular-activities",
+  },
+];
 
 function TeachingMethodologyPage() {
   const list = [
@@ -96,7 +112,7 @@ function TeachingMethodologyPage() {
                 <GridList list={list} columnsCount={4} />
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
                 <div className="page__image-placeholder">
                   <Image
                     fill
@@ -149,7 +165,7 @@ function TeachingMethodologyPage() {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

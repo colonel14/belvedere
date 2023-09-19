@@ -6,10 +6,28 @@ import Section from "../Section";
 import KnowMore from "../KnowMore";
 import { useTina } from "tinacms/dist/react";
 import PageLinksList from "../PageLinksList";
+import { lifeLearningLinks } from "@/data";
 
-function SportsPage(props) {
-  const { data } = useTina(props);
+const linksList = [
+  {
+    name: "Music",
+    href: "/life-and-learning/extra-curricular-activities/music",
+  },
+  {
+    name: "Drama",
+    href: "/life-and-learning/extra-curricular-activities/drama",
+  },
+  {
+    name: "Art & Design",
+    href: "/life-and-learning/extra-curricular-activities/art-and-design",
+  },
+  {
+    name: "Trips",
+    href: "/life-and-learning/extra-curricular-activities/trips",
+  },
+];
 
+function SportsPage() {
   return (
     <main>
       <PageHero imageSrc="/sports-hero.jpg" title="Sports" color="#6AC45B" />
@@ -33,7 +51,7 @@ function SportsPage(props) {
                 </p>
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>
@@ -47,7 +65,7 @@ function SportsPage(props) {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

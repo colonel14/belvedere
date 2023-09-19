@@ -7,6 +7,7 @@ import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
 import Heading from "../Heading";
 import LearningArea from "../LearningArea";
+import { lifeLearningLinks } from "@/data";
 
 function EarlyYearsFoundationPage() {
   const list = [
@@ -86,7 +87,7 @@ function EarlyYearsFoundationPage() {
                 <LearningArea title="Primary areas of learning" list={list2} />
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>

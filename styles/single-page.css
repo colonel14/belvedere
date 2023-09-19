@@ -157,6 +157,19 @@
   font-family: Palatino;
 }
 
+.vision__heading,
+.mission__heading {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+.vision__heading {
+  color: #ffb842;
+}
+.mission__heading {
+  color: #65d2de;
+}
 .page__text {
   font-size: 16px;
   font-weight: 400;
@@ -250,9 +263,14 @@
   line-height: 26px;
   text-transform: capitalize;
 }
+.page__info-list ul li a.link__active {
+  color: #0f213f;
+  pointer-events: none;
+}
 .page__info-list ul li a {
   color: #2b52aa;
   font-weight: 500;
+  pointer-events: all;
   transition: all 0.3s;
 }
 .page__info-list ul li a:hover {

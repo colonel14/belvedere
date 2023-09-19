@@ -12,24 +12,84 @@ const Navbar = () => {
   const navigation = [
     {
       title: "about us",
-
+      href: "/about-us",
       sublinks: [
         [
           {
             title: "Primary Head’s Welcome",
-            href: "/",
+            href: "/about-us/primary-head-welcome",
           },
           {
             title: "Our History",
-            href: "/",
+            href: "/about-us/our-history",
           },
           {
             title: "Vision & Mission",
-            href: "/",
+            href: "/about-us/vision-and-mission",
           },
           {
             title: "Values and Ethos",
-            href: "/",
+            href: "/about-us/values-and-ethos",
+          },
+        ],
+      ],
+    },
+    {
+      title: "Life & Learning",
+      href: "/life-and-learning",
+      sublinks: [
+        [
+          {
+            title: "Academic",
+            href: "/life-and-learning/academic",
+            isTitle: true,
+          },
+          {
+            title: "A Broad Curriculum",
+            href: "/life-and-learning/broad-curriculum",
+          },
+          {
+            title: "Early Years Foundation Stage",
+            href: "/life-and-learning/broad-curriculum/early-years-foundation-stage",
+          },
+          {
+            title: "Primary Stage",
+            href: "/life-and-learning/broad-curriculum/primary-stage",
+          },
+          {
+            title: "Secondary School",
+            href: "/life-and-learning/broad-curriculum/secondary-school",
+          },
+          {
+            title: "Teaching Methodology",
+            href: "/life-and-learning/teaching-methodology",
+          },
+        ],
+        [
+          {
+            title: "Extra-curricular Activities",
+            href: "/life-and-learning/extra-curricular-activities",
+            isTitle: true,
+          },
+          {
+            title: "Sports",
+            href: "/life-and-learning/extra-curricular-activities/sports",
+          },
+          {
+            title: "Music",
+            href: "/life-and-learning/extra-curricular-activities/music",
+          },
+          {
+            title: "Drama",
+            href: "/life-and-learning/extra-curricular-activities/drama",
+          },
+          {
+            title: "Art & Design",
+            href: "/life-and-learning/extra-curricular-activities/art-and-design",
+          },
+          {
+            title: "Trips",
+            href: "/life-and-learning/extra-curricular-activities/trips",
           },
         ],
       ],
@@ -39,80 +99,40 @@ const Navbar = () => {
       href: "/",
     },
     {
-      title: "Life & Learning",
+      title: "News & Events",
       href: "/",
       sublinks: [
         [
           {
-            title: "Academic",
-            href: "/",
-            isTitle: true,
-          },
-          {
-            title: "A Broad Curriculum",
+            title: "Latest News",
             href: "/",
           },
           {
-            title: "Early Years Foundation Stage",
-            href: "/",
-          },
-          {
-            title: "Primary Stage",
-            href: "/",
-          },
-          {
-            title: "Secondary School",
-            href: "/",
-          },
-          {
-            title: "Teaching Methodology",
-            href: "/",
-          },
-        ],
-        [
-          {
-            title: "Extra-curricular Activities",
-            href: "/",
-            isTitle: true,
-          },
-          {
-            title: "Sports",
-            href: "/",
-          },
-          {
-            title: "Music",
-            href: "/",
-          },
-          {
-            title: "Drama",
-            href: "/",
-          },
-          {
-            title: "Art & Design",
-            href: "/",
-          },
-          {
-            title: "Trips",
+            title: "Events",
             href: "/",
           },
         ],
       ],
     },
     {
-      title: "News & Events",
-      href: "/",
-    },
-    {
-      title: "Careers",
-      href: "/",
-    },
-    {
       title: "Portals",
       href: "/",
-    },
-    {
-      title: "Contact Us",
-      href: "/",
+      sublinks: [
+        [
+          {
+            title: "Pupils",
+            href: "/",
+          },
+          {
+            title: "Parents",
+            href: "/",
+          },
+          {
+            title: "Staff",
+            href: "/",
+          },
+        ],
+      ],
     },
   ];
 
@@ -132,7 +152,7 @@ const Navbar = () => {
           <ul className="app__navbar-links">
             {navigation.map((item, idx) => (
               <li className="app__navbar-link" key={idx}>
-                <a>{item.title}</a>
+                <Link href={item.href}>{item.title}</Link>
                 {item.sublinks && (
                   <div className="menu__sub">
                     {item.sublinks.map((column, index) => (

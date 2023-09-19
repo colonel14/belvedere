@@ -6,6 +6,22 @@ import KnowMore from "../KnowMore";
 import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
 import Heading from "../Heading";
+import { lifeLearningLinks } from "@/data";
+
+const linksList = [
+  {
+    name: "A Broad Curriculum",
+    href: "/life-and-learning/broad-curriculum",
+  },
+  {
+    name: "Teaching Methodology",
+    href: "/life-and-learning/teaching-methodology",
+  },
+  {
+    name: "Academic",
+    href: "/life-and-learning/academic",
+  },
+];
 
 function ExtracurricularActivitiesPage() {
   const list = [
@@ -114,7 +130,7 @@ function ExtracurricularActivitiesPage() {
                 </div>
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>
@@ -128,7 +144,7 @@ function ExtracurricularActivitiesPage() {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

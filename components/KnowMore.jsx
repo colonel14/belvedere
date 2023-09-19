@@ -2,7 +2,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-function KnowMore() {
+function KnowMore({ linksList = [] }) {
   return (
     <div className="know__more">
       <div className="container">
@@ -12,15 +12,11 @@ function KnowMore() {
               <h4 className="know__more-title">Know More</h4>
             </div>
             <div className="know__more-links">
-              <Link href="/">
-                A Broad Curriculum <ChevronRight />
-              </Link>
-              <Link href="/">
-                Teaching Methodology <ChevronRight />
-              </Link>
-              <Link href="/">
-                Extra-curricular Activities <ChevronRight />
-              </Link>
+              {linksList.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.name} <ChevronRight />
+                </Link>
+              ))}
             </div>
           </div>
         </div>

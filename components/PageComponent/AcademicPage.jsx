@@ -6,6 +6,21 @@ import Section from "../Section";
 import KnowMore from "../KnowMore";
 import { useTina } from "tinacms/dist/react";
 
+const linksList = [
+  {
+    name: "A Broad Curriculum",
+    href: "/life-and-learning/broad-curriculum",
+  },
+  {
+    name: "Teaching Methodology",
+    href: "/life-and-learning/teaching-methodology",
+  },
+  {
+    name: "Extra-curricular Activities",
+    href: "/life-and-learning/extra-curricular-activities",
+  },
+];
+
 function AcademicPage(props) {
   const { data } = useTina(props);
 
@@ -27,7 +42,7 @@ function AcademicPage(props) {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

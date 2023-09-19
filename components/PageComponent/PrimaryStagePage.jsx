@@ -4,6 +4,7 @@ import PageHero from "../PageHero";
 import PageLinksList from "../PageLinksList";
 import Heading from "../Heading";
 import GridList from "../GridList";
+import { lifeLearningLinks } from "@/data";
 
 function PrimaryStagePage() {
   const list = [
@@ -95,7 +96,7 @@ function PrimaryStagePage() {
                 <GridList list={list} />
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>

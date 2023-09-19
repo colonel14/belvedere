@@ -1,18 +1,19 @@
 import "@/styles/single-page.css";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 
-import client from "@/tina/__generated__/client";
-
-const AcademicComponent = dynamic(
-  () => import("@/components/PageComponent/AcademicPage"),
+const LifeAndLearningPage = dynamic(
+  () => import("@/components/PageComponent/LifeAndLearningPage"),
   { ssr: false }
 );
-export default async function Home() {
-  const result = await client.queries.page({ relativePath: "home.md" });
 
+export const metadata: Metadata = {
+  title: "Life & Learning",
+};
+export default async function LifeAndLearning() {
   return (
     <main>
-      <AcademicComponent {...result} />
+      <LifeAndLearningPage />
     </main>
   );
 }

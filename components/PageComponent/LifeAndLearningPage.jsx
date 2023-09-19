@@ -1,12 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import PageHero from "../PageHero";
-import Section from "../Section";
-import KnowMore from "../KnowMore";
-import { useTina } from "tinacms/dist/react";
 import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
+import { lifeLearningLinks } from "@/data";
 
 function LifeAndLearningPage() {
   const list = [
@@ -58,7 +55,7 @@ function LifeAndLearningPage() {
                 <CardsList list={list} />
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>

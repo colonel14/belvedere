@@ -5,6 +5,22 @@ import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import PageLinksList from "../PageLinksList";
 import Heading from "../Heading";
+import { lifeLearningLinks } from "@/data";
+
+const linksList = [
+  {
+    name: "Music",
+    href: "/life-and-learning/extra-curricular-activities/music",
+  },
+  {
+    name: "Art & Design",
+    href: "/life-and-learning/extra-curricular-activities/art-and-design",
+  },
+  {
+    name: "Trips",
+    href: "/life-and-learning/extra-curricular-activities/trips",
+  },
+];
 
 function DramaPage() {
   return (
@@ -43,7 +59,7 @@ function DramaPage() {
                 </p>
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>
@@ -57,7 +73,7 @@ function DramaPage() {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }

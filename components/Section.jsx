@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import Heading from "./Heading";
+import { lifeLearningLinks } from "@/data";
+
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
 import { useEffect } from "react";
@@ -149,7 +149,7 @@ function Section({ data }) {
               </div>
             </div>
             <div className="col-span-4 app__section-right">
-              <PageLinksList />
+              <PageLinksList links={lifeLearningLinks} />
               <div className="page__info-foursquare">
                 <div className="page__info-foursquare_palatino">
                   We encourage a <br /> love of learning <br /> through

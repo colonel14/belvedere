@@ -4,6 +4,22 @@ import Image from "next/image";
 import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import PageLinksList from "../PageLinksList";
+import { lifeLearningLinks } from "@/data";
+
+const linksList = [
+  {
+    name: "Music",
+    href: "/life-and-learning/extra-curricular-activities/music",
+  },
+  {
+    name: "Drama",
+    href: "/life-and-learning/extra-curricular-activities/drama",
+  },
+  {
+    name: "Trips",
+    href: "/life-and-learning/extra-curricular-activities/trips",
+  },
+];
 
 function ArtAndDesignPage() {
   return (
@@ -35,7 +51,7 @@ function ArtAndDesignPage() {
                 </p>
               </div>
               <div className="col-span-4 app__section-right">
-                <PageLinksList />
+                <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
           </div>
@@ -49,7 +65,7 @@ function ArtAndDesignPage() {
         unoptimized
         alt="footer image"
       />
-      <KnowMore />
+      <KnowMore linksList={linksList} />
     </main>
   );
 }
