@@ -6,7 +6,7 @@ import { tinaField } from "tinacms/dist/react";
 import AOS from "aos";
 import { useEffect } from "react";
 
-function PageHero({ imageSrc, color, data, query }) {
+function PageHero({ imageSrc, color, title, data, query }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -17,10 +17,11 @@ function PageHero({ imageSrc, color, data, query }) {
         <div className="app__hero-wrapper">
           <div
             className="app__hero-image"
-            data-tina-field={tinaField(data.page, "heroImg")}
+            // data-tina-field={tinaField(data.page, "heroImg")}
           >
             <Image
-              src={data.page.heroImg || "/hero-1.jpg"}
+              // src={data.page.heroImg || "/hero-1.jpg"}
+              src={imageSrc || "/hero-1.jpg"}
               fill
               alt="hero image"
               unoptimized
@@ -28,10 +29,12 @@ function PageHero({ imageSrc, color, data, query }) {
             />
           </div>
           <h2
-            className={cn(`app__hero-title bg-[${color}]`)}
-            data-tina-field={tinaField(data.page, "title")}
+            className={`app__hero-title !bg-[${color}]`}
+            style={{backgroundColor: color}}
+            // data-tina-field={tinaField(data.page, "title")}
           >
-            {data.page.title}
+            {/* {data.page.title} */}
+            {title}
           </h2>
         </div>
       </div>

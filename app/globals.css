@@ -44,6 +44,16 @@
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
+
+    /* Theme Colors */
+    --blue: "#0F213F";
+    --red: "#C33734";
+    --purple: "#44508D";
+    --greenDark: "#046A38";
+    --greenLight: "#6AC45B";
+    --pink: "#FF9BC2";
+    --viking: "#65D2DE";
+    --yellow: "#FFB842";
   }
 
   .dark {

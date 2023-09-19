@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx,jsx}",
     "./components/**/*.{ts,tsx,jsx}",
     "./app/**/*.{ts,tsx,js,jsx}",
     "./src/**/*.{ts,tsx}",
@@ -22,6 +22,16 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        theme: {
+          blue: "var(--blue)",
+          red: "var(--red)",
+          purple: "var(--purple)",
+          greenDark: "var(--greenDark)",
+          greenLight: "var(--greenLight)",
+          pink: "var(--pink)",
+          viking: "var(--viking)",
+          yellow: "var(--yellow)",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -72,5 +82,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
+};

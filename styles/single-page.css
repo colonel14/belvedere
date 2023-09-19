@@ -1,9 +1,134 @@
-/*!******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./styles/single-page.css ***!
-  \******************************************************************************************************************************************************************************************************************************************************************/
-/*!******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[12].use[3]!./styles/single-page.css ***!
-  \******************************************************************************************************************************************************************************************************************************************************************/
+.card__links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card__link-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f5f7f9;
+}
+
+.card__link-box-image {
+  width: 365px;
+  flex-shrink: 0;
+  position: relative;
+  top: -12px;
+  filter: grayscale(100%);
+}
+.card__link-box-info {
+  padding: 30px 40px;
+}
+.card__link-grade {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: Palatino;
+  color: var(--blue);
+  line-height: 30px;
+}
+.card__link-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 10px;
+  max-width: 60%;
+  color: #0f213f;
+}
+
+.card__link-title-underline {
+  position: relative;
+  z-index: 5;
+}
+.card__link-title-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 174px;
+  height: 19px;
+  max-width: 100%;
+  background: #65d2de;
+  z-index: -1;
+}
+
+.card__link-description {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #0f213f;
+  font-family: Helvetica;
+}
+
+.card__link-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.card__link-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.learning__area {
+  margin-top: 4rem;
+}
+.learning__area-title {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.learning__area-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.learning__area-box {
+  padding: 50px 30px 10px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 35px;
+  text-transform: capitalize;
+}
+
+.grid__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+
+  margin-top: 6rem;
+}
+
+.grid__list-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 1/1;
+
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: capitalize;
+}
+
 .section__heading {
   max-width: 90%;
   margin-bottom: 3.3rem;
@@ -73,12 +198,13 @@
   bottom: -20px;
   left: 40px;
   height: 120px;
-  min-width: 330px;
+  width: 360px;
   padding: 7px 32px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   font-size: 32px;
+  line-height: 32px;
   font-weight: 700;
   text-transform: capitalize;
   background: #c33734;
@@ -117,7 +243,13 @@
   line-height: 26px;
   text-transform: capitalize;
 }
-
+.page__info-list ul li a.title__link {
+  color: #2b52aa;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 26px;
+  text-transform: capitalize;
+}
 .page__info-list ul li a {
   color: #2b52aa;
   font-weight: 500;
@@ -160,6 +292,13 @@
 
 .page__info-foursquare_sec .page__info-foursquare_poppins {
   color: #ff9bc2;
+}
+
+.page__image-placeholder {
+  position: relative;
+  max-width: 350px;
+  height: 480px;
+  margin: 20px 0 20px auto;
 }
 
 #features {

@@ -6,6 +6,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
 import { useEffect } from "react";
 import AOS from "aos";
+import PageLinksList from "./PageLinksList";
 
 function Section({ data }) {
   useEffect(() => {
@@ -148,56 +149,7 @@ function Section({ data }) {
               </div>
             </div>
             <div className="col-span-4 app__section-right">
-              <div className="page__info-list">
-                <h5 className="page__list-title">Explore this section</h5>
-                <ul>
-                  <li>
-                    Life & Learning
-                    <ul>
-                      <li>
-                        <Link href="/">Academic</Link>
-                      </li>
-                      <li>
-                        A Broad Curriculum
-                        <ul>
-                          <li>
-                            <Link href="/">Early Years Foundation Stage</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Primary Stage</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Secondary School</Link>
-                          </li>
-                        </ul>
-                        <li>
-                          <Link href="/">Teaching Methodology</Link>
-                        </li>
-                      </li>
-                      <li>
-                        Extra-curricular Activities
-                        <ul>
-                          <li>
-                            <Link href="/">Sports</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Music</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Drama</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Art & Design</Link>
-                          </li>
-                          <li>
-                            <Link href="/">Trips</Link>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+              <PageLinksList />
               <div className="page__info-foursquare">
                 <div className="page__info-foursquare_palatino">
                   We encourage a <br /> love of learning <br /> through

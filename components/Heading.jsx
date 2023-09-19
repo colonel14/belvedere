@@ -1,12 +1,16 @@
 "use client";
 
-function Heading({title, subtitle}) {
+function Heading({ title, subtitle, titleColor, subtitleColor }) {
   return (
     <div className="section__heading">
-        <h4 className="heading__subtitle">{subtitle}</h4>
-        <h3 className="heading__title">{title}</h3>
+      <h5 className="heading__subtitle" style={{ color: subtitleColor }}>
+        {subtitle}
+      </h5>
+      <h3 className="heading__title" style={{ color: titleColor }}>
+        {title}
+      </h3>
     </div>
-  )
+  );
 }
 
-export default Heading
+export default Heading;

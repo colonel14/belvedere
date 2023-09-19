@@ -6,7 +6,7 @@ import Section from "../Section";
 import KnowMore from "../KnowMore";
 import { useTina } from "tinacms/dist/react";
 
-function HomeComponent(props) {
+function AcademicPage(props) {
   const { data } = useTina(props);
 
   return (
@@ -23,7 +23,7 @@ function HomeComponent(props) {
         src="/footer-img.jpg"
         width={100}
         height={100}
-        className="w-full h-[245px] lg:h-[495px] object-cover"
+        className="w-full h-[245px] lg:h-[495px] object-cover grayscale"
         unoptimized
         alt="footer image"
       />
@@ -32,4 +32,4 @@ function HomeComponent(props) {
   );
 }
 
-export default HomeComponent;
+export default AcademicPage;
