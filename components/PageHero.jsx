@@ -26,11 +26,12 @@ function PageHero({ imageSrc, color, title, data, query }) {
               alt="hero image"
               unoptimized
               className="object-cover"
+              priority
             />
           </div>
           <h2
             className={`app__hero-title !bg-[${color}]`}
-            style={{backgroundColor: color}}
+            style={{ backgroundColor: color }}
             // data-tina-field={tinaField(data.page, "title")}
           >
             {/* {data.page.title} */}
