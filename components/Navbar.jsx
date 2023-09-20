@@ -121,15 +121,15 @@ const Navbar = () => {
         [
           {
             title: "Pupils",
-            href: "/",
+            href: "/portals/pupils",
           },
           {
             title: "Parents",
-            href: "/",
+            href: "/portals/parents",
           },
           {
             title: "Staff",
-            href: "/",
+            href: "/portals/staff",
           },
         ],
       ],

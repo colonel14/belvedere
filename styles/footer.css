@@ -20,7 +20,7 @@ footer {
   display: flex;
 }
 .footer__links-column {
-  width: 244px;
+  width: 175px;
 }
 
 .footer__links-column li a {

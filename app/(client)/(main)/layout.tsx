@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import "../globals.css";
+import "../../globals.css";
 import "@/styles/navbar.css";
 import "@/styles/footer.css";
 import type { Metadata } from "next";

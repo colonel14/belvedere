@@ -88,6 +88,27 @@
   border-radius: 50%;
 }
 
+.keywords {
+  display: flex;
+  margin-top: 80px;
+}
+.keywords span {
+  flex: 1;
+  font-size: 38px;
+  font-weight: 700;
+}
+.keywords span:first-of-type {
+  color: #0f213f;
+}
+.keywords span:nth-of-type(2) {
+  color: #046a38;
+}
+.keywords span:last-of-type {
+  color: #fb491c;
+}
+.keywords ~ .grid__list {
+  margin-top: 3rem;
+}
 .learning__area {
   margin-top: 4rem;
 }
