@@ -148,6 +148,7 @@ const Navbar = () => {
                 height={70}
                 alt="logo"
                 unoptimized
+                priority
               />
             </Link>
           </div>

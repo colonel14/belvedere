@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "Helvetica";
   src: url("../fonts/Helvetica Roman.ttf");
