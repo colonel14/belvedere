@@ -20,7 +20,7 @@ function LifeAndLearningPage() {
       title: "A Broad Curriculum",
       description:
         "The British education system is founded on critical thinking, creativity, and flexibility. At Belvedere School Cairo we offer a genuinely broad curriculum following the British National Curricullum, with generous time allocated to music, sport,...",
-      href: "/life-and-learning/academic",
+      href: "/life-and-learning/broad-curriculum",
       color: "#44508D",
     },
     {
@@ -28,7 +28,7 @@ function LifeAndLearningPage() {
       title: "Teaching Methodology",
       description:
         "The Belvedere School placesemphasis on the notion thatteaching and learning areas significant as curriculumcontent in determining pupilprogress and achievement.To this end, we seek todevelop shared...",
-      href: "/life-and-learning/academic",
+      href: "/life-and-learning/teaching-methodology",
       color: "#046A38",
     },
     {
@@ -36,7 +36,7 @@ function LifeAndLearningPage() {
       title: "Extra-curricular Activities",
       description:
         "Along with enriching educational visits and events tailored to complement classroom-based learning, Belvedere School will offer extracurricular and after-school activities as far as expertise and numbers allow. It is anticipated that pupils...",
-      href: "/life-and-learning/academic",
+      href: "/life-and-learning/extra-curricular-activities",
       color: "#FF9BC2",
     },
   ];

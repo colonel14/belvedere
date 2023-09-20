@@ -13,7 +13,6 @@ function CardsList({ list }) {
           className="card__link-box"
           data-aos="fade-animation"
           data-aos-duration="700"
-          data-aos-offset="-50"
         >
           <div className="card__link-box-image">
             <Image
