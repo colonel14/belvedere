@@ -23,7 +23,7 @@ const linksList = [
 
 function ArtAndDesignPage() {
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/art-design-hero.jpg"
         title="Art & Design"
@@ -66,7 +66,7 @@ function ArtAndDesignPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

@@ -41,7 +41,7 @@ function LifeAndLearningPage() {
     },
   ];
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/life-learning-hero.jpg"
         title={
@@ -67,7 +67,7 @@ function LifeAndLearningPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

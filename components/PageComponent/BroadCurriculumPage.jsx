@@ -74,7 +74,7 @@ function BroadCurriculumPage() {
     },
   ];
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/broad-curriculum-hero.jpg"
         title="A Broad Curriculum"
@@ -117,7 +117,7 @@ function BroadCurriculumPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

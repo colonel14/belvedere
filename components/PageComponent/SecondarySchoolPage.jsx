@@ -68,7 +68,7 @@ function SecondarySchoolPage() {
   ];
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/secondary-school-hero.jpg"
         title="Secondary School"
@@ -119,7 +119,7 @@ function SecondarySchoolPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

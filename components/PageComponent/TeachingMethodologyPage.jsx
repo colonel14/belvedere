@@ -60,7 +60,7 @@ function TeachingMethodologyPage() {
   ];
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/teaching-methodology-hero.jpg"
         title="Teaching Methodology"
@@ -166,7 +166,7 @@ function TeachingMethodologyPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

@@ -25,7 +25,7 @@ const linksList = [
 
 function OurHistoryPage() {
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/our-history-hero.jpg"
         title="Our History"
@@ -83,7 +83,7 @@ function OurHistoryPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

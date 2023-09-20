@@ -99,6 +99,21 @@ function Footer() {
             </Link>
           </div>
         </div>
+        <div id="footer__bottom">
+          <Link href="/">
+            <Image
+              src="/footer-logo.svg"
+              width={148}
+              height={37.5}
+              alt="logo"
+            />
+          </Link>
+          <div className="footer__bottom-links">
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            <Link href="/cookie-policy">Cookie Policy</Link>
+          </div>
+        </div>
       </footer>
     </div>
   );

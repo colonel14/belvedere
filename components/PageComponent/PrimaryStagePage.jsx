@@ -51,7 +51,7 @@ function PrimaryStagePage() {
   ];
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/primary-stage-hero.jpg"
         title="Primary Stage"
@@ -102,7 +102,7 @@ function PrimaryStagePage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

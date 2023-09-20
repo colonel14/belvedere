@@ -45,7 +45,7 @@ function ValuesAndEthosPage() {
   ];
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/values-and-ethos-hero.jpg"
         title={
@@ -121,7 +121,7 @@ function ValuesAndEthosPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

@@ -96,7 +96,7 @@ function ExtracurricularActivitiesPage() {
     },
   ];
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/extra-curricular-activities-hero.jpg"
         title="Extra-curricular Activities"
@@ -145,7 +145,7 @@ function ExtracurricularActivitiesPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

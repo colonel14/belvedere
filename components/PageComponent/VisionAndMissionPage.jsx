@@ -25,7 +25,7 @@ const linksList = [
 
 function VisionAndMissionPage() {
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/vision-mission-hero.jpg"
         title="Vision & Mission"
@@ -99,7 +99,7 @@ function VisionAndMissionPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

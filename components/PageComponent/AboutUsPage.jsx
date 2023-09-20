@@ -38,7 +38,7 @@ function AboutUsPage() {
     },
   ];
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/about-us-hero.jpg"
         title="About Us"
@@ -80,7 +80,7 @@ function AboutUsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

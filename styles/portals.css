@@ -16,19 +16,8 @@
 }
 
 .app__input {
-  width: 100%;
-  display: block;
-  padding: 10px 0;
-  background: none;
-  border: 0;
-  outline: 0;
-  border-bottom: 1.5px solid #0f213f;
   margin-bottom: 50px;
 }
-.app__input::placeholder {
-  color: #ccd1d9;
-}
-
 .submit__button {
   border: 1px solid #2b52aa;
   color: #2b52aa;

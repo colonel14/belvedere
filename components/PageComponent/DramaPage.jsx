@@ -24,7 +24,7 @@ const linksList = [
 
 function DramaPage() {
   return (
-    <main>
+    <div>
       <PageHero imageSrc="/drama-hero.jpg" title="Drama" color="#FB491C" />
       <section className="app__section">
         <div className="container">
@@ -74,7 +74,7 @@ function DramaPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

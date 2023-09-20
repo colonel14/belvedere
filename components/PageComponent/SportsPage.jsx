@@ -29,7 +29,7 @@ const linksList = [
 
 function SportsPage() {
   return (
-    <main>
+    <div>
       <PageHero imageSrc="/sports-hero.jpg" title="Sports" color="#6AC45B" />
       <section className="app__section">
         <div className="container">
@@ -66,7 +66,7 @@ function SportsPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

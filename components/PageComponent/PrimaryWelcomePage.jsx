@@ -25,7 +25,7 @@ const linksList = [
 
 function PrimaryWelcomePage() {
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/primary-welcome-hero.jpg"
         title="Primary Head’s Welcome"
@@ -87,7 +87,7 @@ function PrimaryWelcomePage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

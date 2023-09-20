@@ -25,7 +25,7 @@ function AcademicPage(props) {
   const { data } = useTina(props);
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/hero-1.jpg"
         title="Academic"
@@ -43,7 +43,7 @@ function AcademicPage(props) {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 

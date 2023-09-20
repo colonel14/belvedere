@@ -44,7 +44,7 @@ function EarlyYearsFoundationPage() {
   ];
 
   return (
-    <main>
+    <div>
       <PageHero
         imageSrc="/early-years-hero.jpg"
         title="Early Years Foundation Stage"
@@ -93,7 +93,7 @@ function EarlyYearsFoundationPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

@@ -23,7 +23,7 @@ const linksList = [
 
 function TripsPage() {
   return (
-    <main>
+    <div>
       <PageHero imageSrc="/trips-hero.jpg" title="Trips" color="#65D2DE" />
       <section className="app__section">
         <div className="container">
@@ -65,7 +65,7 @@ function TripsPage() {
         alt="footer image"
       />
       <KnowMore linksList={linksList} />
-    </main>
+    </div>
   );
 }
 
