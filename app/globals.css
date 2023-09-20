@@ -10,8 +10,17 @@
 
 @font-face {
   font-family: "Helvetica";
-  src: url("../fonts/Helvetica Roman.ttf");
+  src: url("../fonts/Helvetica-Roman.ttf");
 }
+/* @font-face {
+  font-family: "Helvetica";
+  src: url("https://candyfonts.com/wp-data/2022/03/10/125411/AGHELV_N.ttf")
+      format("woff"),
+    url("https://candyfonts.com/wp-data/2022/03/10/125411/AGHELV_N.ttf")
+      format("opentype"),
+    url("https://candyfonts.com/wp-data/2022/03/10/125411/AGHELV_N.ttf")
+      format("truetype");
+} */
 @font-face {
   font-family: "Palatino";
   src: url("../fonts/Palatino.ttf");
@@ -110,6 +119,15 @@ body {
   margin: 0 auto;
   position: relative;
 }
+
+.main__text {
+  color: #0f213f;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 30px;
+  font-family: Helvetica;
+}
+
 .app__label {
   margin-bottom: 30px;
   font-size: 16px;
@@ -139,6 +157,7 @@ body {
 }
 
 .app__button {
+  width: fit-content;
   margin: 0 auto;
   padding: 12px 30px;
   display: flex;
