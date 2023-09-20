@@ -30,7 +30,7 @@ function DramaPage() {
         <div className="container">
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
-              <div className="col-span-8 app__section-left">
+              <div className="col-span-9 app__section-left">
                 <Heading
                   title={
                     <>
@@ -58,7 +58,7 @@ function DramaPage() {
                   develop empathy for others.
                 </p>
               </div>
-              <div className="col-span-4 app__section-right">
+              <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>

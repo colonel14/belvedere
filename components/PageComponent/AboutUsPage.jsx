@@ -4,6 +4,7 @@ import PageHero from "../PageHero";
 import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
 import { aboutUsLinks } from "@/data";
+import Heading from "../Heading";
 
 function AboutUsPage() {
   const list = [
@@ -48,6 +49,15 @@ function AboutUsPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-8 app__section-left">
+                <div className="heading__bloquote">
+                  <Heading
+                    title="education is life itself."
+                    subtitle="Education is not preparation for life;"
+                    titleColor="#65D2DE"
+                    subtitleColor="#65D2DE"
+                  />
+                  <span>- John Dewey</span>
+                </div>
                 <p className="page__text">
                   The Belvedere Preparatory School was originally founded in
                   1880 as the Junior Department of The Belvedere School,

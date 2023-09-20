@@ -24,9 +24,9 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         theme: {
           blue: "var(--blue)",
-          red: "var(--red)",
-          purple: "var(--purple)",
-          greenDark: "var(--greenDark)",
+          red: "#C33734",
+          purple: "#44508D",
+          greenDark: "#046A38",
           greenLight: "var(--greenLight)",
           pink: "var(--pink)",
           viking: "var(--viking)",

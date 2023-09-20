@@ -29,7 +29,7 @@ function TripsPage() {
         <div className="container">
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
-              <div className="col-span-8 app__section-left">
+              <div className="col-span-9 app__section-left">
                 <p className="page__text">
                   School trips at Belvedere are an indispensable aspect of the
                   pupils’ journeys. Acting as both a complementary learning tool
@@ -49,7 +49,7 @@ function TripsPage() {
                   horizons and leads to academic and personal successes.
                 </p>
               </div>
-              <div className="col-span-4 app__section-right">
+              <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>

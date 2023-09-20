@@ -11,7 +11,7 @@ function LifeAndLearningPage() {
       image: "/card-img-1.jpg",
       title: "Academic",
       description:
-        "At Belvedere School, Cairo pupils take ownership of what they learn by focusing on how the new knowledge solves a problem or adds value, instead of simply being given information and waiting for the correct answer. This preps...",
+        "At Belvedere School, Cairo pupils take ownership of what they learn by focusing on how the new knowledge solves a problem or adds value, instead of simply being given information and waiting for the correct answer. This preps... ",
       href: "/life-and-learning/academic",
       color: "#C33734",
     },
@@ -44,17 +44,23 @@ function LifeAndLearningPage() {
     <main>
       <PageHero
         imageSrc="/life-learning-hero.jpg"
-        title="Life & Learning"
+        title={
+          <>
+            Life &
+            <br />
+            Learning
+          </>
+        }
         color="#0F213F"
       />
       <section className="app__section">
         <div className="container">
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
-              <div className="col-span-8 app__section-left">
+              <div className="col-span-9 app__section-left">
                 <CardsList list={list} />
               </div>
-              <div className="col-span-4 app__section-right">
+              <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />
               </div>
             </div>
