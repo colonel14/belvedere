@@ -153,3 +153,224 @@
   height: 95%;
   background: #65d2de;
 }
+
+/* Life & Learning Section */
+
+.home__life {
+  position: relative;
+  height: 90vh;
+  margin-top: 100px;
+}
+.home__life .container {
+  height: 100%;
+}
+.home__life::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 257px;
+  width: 18vw;
+  background: #6ac45b;
+}
+
+.home__life-inner {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 109px;
+  align-items: center;
+}
+
+.home__life-heading {
+  margin-bottom: 20px;
+}
+.home__life-heading span {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #0f213f;
+  display: block;
+  margin-bottom: 30px;
+}
+.home__life-heading h3 {
+  color: #0f213f;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 43px;
+}
+
+.home__life .section__button {
+  color: #fb491c;
+}
+.home__life .section__button .section__button-icon {
+  border-color: #fb491c;
+  color: #fb491c;
+}
+.home__life .section__button:hover .section__button-icon {
+  background: #fb491c;
+  color: #fff;
+}
+
+.home__life-image {
+  position: relative;
+  height: 100%;
+}
+
+/* School Section */
+.home__school {
+  padding: 100px 0;
+}
+.home__school-heading {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.home__school-heading h3 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #0f213f;
+  line-height: 47px;
+  margin-bottom: 17px;
+}
+.home__school-heading p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #0f213f;
+
+  font-family: Helvetica;
+}
+
+.home__school-slider {
+  max-width: 104rem;
+  width: 100%;
+  margin: 0 0 0 auto;
+  padding-left: 2rem;
+}
+
+.school_slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: -26px;
+  position: relative;
+  z-index: 10;
+}
+.slider__controls-button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fb491c;
+  border: 1px solid #fb491c;
+  border-radius: 50%;
+}
+
+.home__school-swiper .swiper-pagination-progressbar {
+  top: unset;
+  bottom: 0;
+  max-width: calc(100% - 288px);
+  background: #ccd1d9;
+  height: 2px;
+}
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background-color: #fb491c;
+  height: 3px;
+  border-radius: 10px;
+}
+.home__school-swiper {
+  padding-bottom: 70px;
+}
+
+.home__school-swiper .swiper-slide {
+  width: 755px;
+}
+
+.slide__item {
+  width: 100%;
+}
+.slide__image {
+  width: 100%;
+}
+.slide__title {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 43px;
+  color: #0f213f;
+  margin: 20px 0 10px;
+}
+.slide__details {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #0f213f;
+}
+
+/* Admissions Section */
+
+.home__admissions {
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+.home__admissions .container {
+  height: 100%;
+}
+
+.home__admissions-inner {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  background: #f5f7f9;
+}
+.home__admissions-info {
+  padding: 100px 40px;
+}
+.home__admissions-heading {
+  margin-bottom: 20px;
+}
+
+.home__admissions-heading h3 {
+  color: #0f213f;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 43px;
+}
+.home__admissions-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.home__admissions-links .admission__link {
+  width: 260px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  border: 1px solid #0f213f;
+  color: #0f213f;
+  border-radius: 45px;
+}
+.admission__link .admission__link-title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Palatino;
+  display: block;
+  line-height: 23px;
+  text-transform: uppercase;
+}
+.admission__link .admission__link-grade {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+}
+.home__admissions-image {
+  position: relative;
+  height: 100%;
+}

@@ -105,11 +105,11 @@ const Navbar = () => {
         [
           {
             title: "Latest News",
-            href: "/",
+            href: "/latest-news",
           },
           {
             title: "Events",
-            href: "/",
+            href: "/events",
           },
         ],
       ],
