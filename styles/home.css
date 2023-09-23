@@ -374,3 +374,67 @@
   position: relative;
   height: 100%;
 }
+
+@media screen and (max-width: 991px) {
+  .home__hero-content {
+    max-width: 90vw;
+  }
+  .home__history::before {
+    display: none;
+  }
+
+  .home__history-info {
+    position: relative;
+  }
+  .home__history-info::before {
+    content: "";
+    position: absolute;
+    top: -3rem;
+    left: -1rem;
+    height: 116%;
+    min-width: 400px;
+    max-width: 72vw;
+    background: #f5f7f9;
+    z-index: -1;
+  }
+  .home__history-inner {
+    display: block;
+  }
+  .home__history-image {
+    height: 450px;
+    margin-top: 5rem;
+  }
+
+  .home__life {
+    height: auto;
+  }
+  .home__life-inner {
+    display: block;
+  }
+  .home__life::before {
+    max-width: 18vw;
+    min-width: 200px;
+    top: -135px;
+    height: 182px;
+  }
+  .home__life-image {
+    height: 400px;
+    margin-top: 5rem;
+  }
+
+  .home__school-swiper .swiper-slide {
+    width: 560px;
+  }
+  .home__school-swiper .swiper-pagination-progressbar {
+    max-width: calc(100% - 146px);
+  }
+  .home__admissions-inner {
+    display: block;
+  }
+  .home__admissions-info {
+    padding: 50px 20px;
+  }
+  .home__admissions-image {
+    height: 282px;
+  }
+}

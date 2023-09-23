@@ -91,3 +91,16 @@ footer {
   padding-right: 9px;
   margin-right: 9px;
 }
+
+@media screen and (max-width: 991px) {
+  .footer__top {
+    display: block;
+  }
+  .footer__top-row {
+    margin-bottom: 2rem;
+  }
+  .footer__socials {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
