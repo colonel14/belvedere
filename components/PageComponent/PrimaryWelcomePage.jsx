@@ -7,6 +7,10 @@ import { aboutUsLinks } from "@/data";
 import Heading from "../Heading";
 import Image from "next/image";
 import KnowMore from "../KnowMore";
+import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import GridList from "../GridList";
 
 const linksList = [
   {
@@ -23,7 +27,9 @@ const linksList = [
   },
 ];
 
-function PrimaryWelcomePage() {
+function PrimaryWelcomePage(props) {
+  const { data } = useTina(props);
+
   return (
     <div>
       <PageHero
@@ -36,40 +42,78 @@ function PrimaryWelcomePage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-8 app__section-left">
-                <Heading
-                  title={
-                    <>
-                      From the Head of
-                      <br />
-                      Primary School
-                    </>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
                   }
-                  subtitle="A message"
-                  titleColor="#2B52AA"
-                  subtitleColor="#2B52AA"
-                />
-                <p className="page__text">
-                  At Belvedere School, Cairo, we are eager to create an
-                  environment that produces well-rounded learners prepared for
-                  the challenges of today’s fast-paced world. Our school
-                  community is made up of and belongs to our pupils and their
-                  parents, so we hope to constantly work hand-in-hand to
-                  maintain the warm family atmosphere and academic excellence
-                  that define Belvedere.
-                </p>
-                <p className="page__text">
-                  Our enthusiastic and committed teachers are dedicated to
-                  delivering individualised learning that fosters every pupil’s
-                  individual skills in a safe and engaging environment.
-                </p>
-                <p className="page__text">
-                  At Belvedere, we believe that every child can achieve
-                  greatness and that greatness is always unique. I am delighted
-                  to lead the Primary School in Belvedere School, Cairo as it
-                  grows to welcome pupils and families who share our vision and
-                  beliefs and look forward to being a part of Belvedere’s
-                  community
-                </p>
+                })}
               </div>
               <div className="col-span-4 app__section-right">
                 <PageLinksList links={aboutUsLinks} />

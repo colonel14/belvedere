@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import PageHero from "../PageHero";
-import Section from "../Section";
 import KnowMore from "../KnowMore";
-import { useTina } from "tinacms/dist/react";
+import { tinaField, useTina } from "tinacms/dist/react";
 import PageLinksList from "../PageLinksList";
 import { lifeLearningLinks } from "@/data";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import GridList from "../GridList";
+import Heading from "../Heading";
 
 const linksList = [
   {
@@ -27,7 +30,9 @@ const linksList = [
   },
 ];
 
-function SportsPage() {
+function SportsPage(props) {
+  const { data } = useTina(props);
+
   return (
     <div>
       <PageHero imageSrc="/sports-hero.jpg" title="Sports" color="#6AC45B" />
@@ -36,19 +41,78 @@ function SportsPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <p className="page__text">
-                  Sports education is a significant pillar of the academic
-                  journey, and at Belvedere, we have established comprehensive
-                  sports facilities and academic programmes that seamlessly
-                  integrate sports instruction. Belvedere pupils will have
-                  access to facilities that allow them to practise a myriad of
-                  sports within a safe and healthy environment. Physical
-                  activity through sports increases physical abilities and is
-                  also linked with improved motor and mental skills. Moreover,
-                  the nature of individual and team sports introduces pupils to
-                  routines and practices crucial to developing and maintaining
-                  healthier lifestyles
-                </p>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

@@ -1,4 +1,5 @@
 import "@/styles/single-page.css";
+import client from "@/tina/__generated__/client";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -12,9 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default async function SecondarySchool() {
+  const result = await client.queries.page({
+    relativePath: "Secondary School.md",
+  });
+
   return (
     <main>
-      <SecondarySchoolPage />
+      <SecondarySchoolPage {...result} />
     </main>
   );
 }

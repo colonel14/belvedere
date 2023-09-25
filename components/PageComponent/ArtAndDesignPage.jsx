@@ -5,6 +5,11 @@ import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import PageLinksList from "../PageLinksList";
 import { lifeLearningLinks } from "@/data";
+import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import GridList from "../GridList";
+import Heading from "../Heading";
 
 const linksList = [
   {
@@ -21,7 +26,8 @@ const linksList = [
   },
 ];
 
-function ArtAndDesignPage() {
+function ArtAndDesignPage(props) {
+  const { data } = useTina(props);
   return (
     <div>
       <PageHero
@@ -34,21 +40,78 @@ function ArtAndDesignPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <p className="page__text">
-                  On the surface, learning through the arts teaches pupils about
-                  colour, layout, perspective, and balance, but beneath all
-                  that, it carries a much bigger influence on their academic and
-                  personal growth. From developing motor, verbal, social,
-                  decision- making, risk-taking, and imaginative skills to
-                  dissecting complex ideas and innovating solutions, Art and
-                  Design can truly transform pupils’ learning. Pupils at
-                  Belvedere will benefit from an Art and Design programme
-                  designed to promote a sense of confidence, collaboration, and
-                  self-expression. Our Belvedere values of celebrating diversity
-                  and success teach our pupils to take pride in their work,
-                  support their classmates, and accept failure as an opportunity
-                  to try again.
-                </p>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

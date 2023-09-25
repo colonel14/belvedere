@@ -5,6 +5,11 @@ import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import PageLinksList from "../PageLinksList";
 import { lifeLearningLinks } from "@/data";
+import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import GridList from "../GridList";
+import Heading from "../Heading";
 
 const linksList = [
   {
@@ -21,7 +26,9 @@ const linksList = [
   },
 ];
 
-function SportsPage() {
+function SportsPage(props) {
+  const { data } = useTina(props);
+
   return (
     <div>
       <PageHero imageSrc="/music-hero.jpg" title="Music" color="#FF9BC2" />
@@ -30,21 +37,78 @@ function SportsPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <p className="page__text">
-                  Just like Mathematics, Music is considered by many a universal
-                  language, and we feel the same at Belvedere. Our pupils will
-                  attend regular music lessons to discover global rhythms,
-                  tempos, and instruments that will fuel their love for music.
-                  Through music instruction, pupils make scholarly improvements,
-                  gainsocial skills, and find a creativeoutlet. Moreover,
-                  playing instruments improves dexterity and hand-eye
-                  coordination, as the need to perform simultaneous tasks
-                  fosters brain development. Music education is also an
-                  exceptional method to develop memorisation skills. Since
-                  pupils will be playing an instrument, reading sheet music, and
-                  recalling lyrics at the same time, the brain’s memory centre
-                  is in constant motion.
-                </p>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

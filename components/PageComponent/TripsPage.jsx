@@ -5,6 +5,11 @@ import PageHero from "../PageHero";
 import KnowMore from "../KnowMore";
 import PageLinksList from "../PageLinksList";
 import { lifeLearningLinks } from "@/data";
+import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import GridList from "../GridList";
+import Heading from "../Heading";
 
 const linksList = [
   {
@@ -21,7 +26,9 @@ const linksList = [
   },
 ];
 
-function TripsPage() {
+function TripsPage(props) {
+  const { data } = useTina(props);
+
   return (
     <div>
       <PageHero imageSrc="/trips-hero.jpg" title="Trips" color="#65D2DE" />
@@ -30,24 +37,78 @@ function TripsPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <p className="page__text">
-                  School trips at Belvedere are an indispensable aspect of the
-                  pupils’ journeys. Acting as both a complementary learning tool
-                  and a social activity, trips provide pupils with real-life
-                  interpretations of the topics they are learning. While our
-                  school trips are mainly educational efforts to contextualise
-                  learning, they serve a much greater purpose. Through
-                  experiencing an out-of-school setting, pupils understand that
-                  learning is not confined to a classroom and that it is, in
-                  fact, a lifelong skill that exists within us. Every trip
-                  planned by the school is designed to include activities that
-                  encourage creative problem- solving, foster interpersonal and
-                  intrapersonal skills, and strengthen the bond between
-                  Belvedere pupils and teachers. In line with Belvedere’s
-                  values, trips are a part of the school’s endeavours to create
-                  an enriching environment for pupils that broadens their
-                  horizons and leads to academic and personal successes.
-                </p>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

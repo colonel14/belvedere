@@ -52,3 +52,9 @@
   line-height: 22px;
   font-family: Helvetica;
 }
+
+@media screen and (max-width: 1200px) {
+  .portals__page-left {
+    padding: 4rem 2rem;
+  }
+}

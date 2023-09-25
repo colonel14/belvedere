@@ -8,6 +8,9 @@ import Heading from "../Heading";
 import Image from "next/image";
 import KnowMore from "../KnowMore";
 import GridList from "../GridList";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
+import { tinaField, useTina } from "tinacms/dist/react";
 
 const linksList = [
   {
@@ -24,7 +27,9 @@ const linksList = [
   },
 ];
 
-function ValuesAndEthosPage() {
+function ValuesAndEthosPage(props) {
+  const { data } = useTina(props);
+
   const list = [
     {
       name: "Synergy.",
@@ -60,53 +65,140 @@ function ValuesAndEthosPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-8 app__section-left">
-                <Heading
-                  title={
-                    <>
-                      for everyone to <br /> feel valued for <br /> who they
-                      are.
-                    </>
-                  }
-                  subtitle={
-                    <>
-                      We believe that the <br /> best way to create a healthy{" "}
-                      <br /> community is
-                    </>
-                  }
-                  titleColor="#FFB842"
-                  subtitleColor="#2B52AA"
-                />
-                <p className="page__text">
-                  Belvedere School, Cairo is a diverse and supportive community
-                  that enables pupils to thrive academically and succeed in
-                  their personal endeavours within and outside school. By
-                  setting high expectations for our pupils, we encourage them to
-                  set clear goals for themselves and continuously evolve to meet
-                  and exceed those goals. Our school values integrity,
-                  diversity, innovation, community, well-being, lifelong
-                  learning, and resilience. These values drive our approach,
-                  creating a thriving environment for pupils.
-                </p>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return i > 0 ? (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      ) : (
+                        <div className="values__ethos-heading" key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </div>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
 
-                <div className="mt-12">
-                  <Image
-                    src="/values-and-ethos-placeholder.jpg"
-                    width={100}
-                    height={300}
-                    className="w-full h-[300px] object-cover"
-                    alt="placeholder"
-                    unoptimized
-                  />
-                </div>
+                    default:
+                      return null;
+                  }
+                })}
                 <div className="keywords">
                   <span>Resilliance.</span>
                   <span>Balance.</span>
                   <span>Innovation.</span>
                 </div>
-                <GridList list={list} columnsCount={4} />
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-4 app__section-right">
                 <PageLinksList links={aboutUsLinks} />
+                <div className="words__square">
+                  <h4 className="words__square-title">
+                    Be Bold. Be Brave. Be...
+                  </h4>
+                  <div className="words__square-list">
+                    <p className="">Benevolent</p>
+                    <p className="">Exceptional</p>
+                    <p className="">Loyal</p>
+                    <p className="">Visionary</p>
+                    <p className="">Exemplary</p>
+                    <p className="">Disciplined</p>
+                    <p className="">Empowering</p>
+                    <p className="">Reflective</p>
+                    <p className="">Ethical</p>
+                  </div>
+                </div>
+                <div className="sidebar__text">
+                  We encourage our pupils to be the best versions of themselves,
+                  not second-rate versions of others.
+                </div>
+                <div className="sidebar__text">
+                  By giving them high quality education, they can become whoever
+                  they aspire to be.
+                </div>
               </div>
             </div>
           </div>

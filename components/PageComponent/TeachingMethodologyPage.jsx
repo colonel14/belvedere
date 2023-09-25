@@ -7,6 +7,9 @@ import GridList from "../GridList";
 import Image from "next/image";
 import KnowMore from "../KnowMore";
 import { lifeLearningLinks } from "@/data";
+import { tinaField, useTina } from "tinacms/dist/react";
+import React from "react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 const linksList = [
   {
@@ -23,7 +26,9 @@ const linksList = [
   },
 ];
 
-function TeachingMethodologyPage() {
+function TeachingMethodologyPage(props) {
+  const { data } = useTina(props);
+
   const list = [
     {
       name: "Interdisciplinary Learning",
@@ -72,44 +77,78 @@ function TeachingMethodologyPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <Heading
-                  title="Our Pupils."
-                  subtitle="We care about"
-                  titleColor="#6AC45B"
-                  subtitleColor="#6AC45B"
-                />
-                <p className="page__text">
-                  The Belvedere School placesemphasis on the notion thatteaching
-                  and learning areas significant as curriculumcontent in
-                  determining pupilprogress and achievement.To this end, we seek
-                  todevelop shared experiencesbetween learners themselvesand the
-                  value of formal andinformal learning situations.
-                </p>
-                <div className="mt-20">
-                  <Heading
-                    title={
-                      <>
-                        STEAM <br />
-                        Education
-                      </>
-                    }
-                    titleColor="#0F213F"
-                  />
-                </div>
-                <p className="page__text">
-                  Pupils of the 21st century cannot and should not receive an
-                  education that was created centuries ago to suit an
-                  environment that no longer exists. Today’s complex world
-                  requires fluid and dynamic learning that is relevant to a
-                  world that is changing exponentially at a rapid rate. This is
-                  where Belvedere School, Cairo incorporates STEAM education
-                  within the curriculum, allowing pupils to learn through life
-                  experiences rather than textbooks. Through project-based,
-                  inquiry-based, and problem-based learning, interdisciplinary
-                  and multidisciplinary learning activities are created with a
-                  learning environment that fosters 21st-century skills.
-                </p>
-                <GridList list={list} columnsCount={4} />
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksGrid":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <GridList
+                              columnsCount={block.columnsCount}
+                              list={block.gridList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

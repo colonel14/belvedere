@@ -28,7 +28,10 @@ function CardItem({ item }) {
 
         <h3
           className={`card__link-title`}
-          style={{ color: item.titleColor ? item.titleColor : item.color }}
+          style={{
+            color: item.titleColor ? item.titleColor : item.color,
+            "--accent-color": item.color,
+          }}
         >
           {item.title}
         </h3>

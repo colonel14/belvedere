@@ -1,15 +1,17 @@
 "use client";
 
-import Image from "next/image";
 import PageHero from "../PageHero";
-import KnowMore from "../KnowMore";
-import CardsList from "../CardsList";
 import PageLinksList from "../PageLinksList";
 import Heading from "../Heading";
 import LearningArea from "../LearningArea";
 import { lifeLearningLinks } from "@/data";
+import { tinaField, useTina } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import React from "react";
 
-function EarlyYearsFoundationPage() {
+function EarlyYearsFoundationPage(props) {
+  const { data } = useTina(props);
+
   const list = [
     {
       name: "Communication & Language",
@@ -47,7 +49,12 @@ function EarlyYearsFoundationPage() {
     <div>
       <PageHero
         imageSrc="/early-years-hero.jpg"
-        title="Early Years Foundation Stage"
+        title={
+          <>
+            Early Years <br />
+            Foundation Stage
+          </>
+        }
         color="#FFB842"
       />
 
@@ -56,35 +63,78 @@ function EarlyYearsFoundationPage() {
           <div className="app__section-inner">
             <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
               <div className="col-span-9 app__section-left">
-                <p className="page__text">
-                  The Early Years Foundation Stage (EYFS) sets the standards
-                  that all must meet to ensure that children learn and develop
-                  well and are kept healthy and safe. We understand and value
-                  the importance of learning through educational play in a
-                  child-initiated environment. Our EYFS gives us a unique
-                  opportunity to provide a balance between EYFS principles and
-                  practices, and the more school-like routines and educational
-                  practices at Key Stage 1.{" "}
-                </p>
-                <Heading
-                  title={
-                    <>
-                      Curriculum & <br />
-                      Subjects.
-                    </>
+                {data?.page?.blocks?.map((block, i) => {
+                  switch (block.__typename) {
+                    case "PageBlocksHeading":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    case "PageBlocksText":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <TinaMarkdown
+                              content={block.body}
+                              components={{
+                                h1: (props) => <h1 {...props} />,
+                                h2: (props) => <h2 {...props} />,
+                                h3: (props) => <h3 {...props} />,
+                                p: (props) => (
+                                  <p className="page__text" {...props} />
+                                ),
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+
+                    case "PageBlocksLearningAreas":
+                      return (
+                        <React.Fragment key={i}>
+                          <div
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <LearningArea
+                              title={block.areaTitle}
+                              list={block.areaList || list}
+                            />
+                          </div>
+                        </React.Fragment>
+                      );
+                    default:
+                      return null;
                   }
-                  subtitle="A look at the"
-                  titleColor="#FB491C"
-                  subtitleColor="#FFB842"
-                />
-                <p className="page__text">
-                  The curriculum at Belvedere School has been developed to
-                  encompass and enhance the requirements of the National
-                  Curriculum. We foster an enjoyment of study through rewarding,
-                  stimulating and challenging classwork.
-                </p>
-                <LearningArea title="Primary areas of learning" list={list} />
-                <LearningArea title="Primary areas of learning" list={list2} />
+                })}
               </div>
               <div className="col-span-3 app__section-right">
                 <PageLinksList links={lifeLearningLinks} />

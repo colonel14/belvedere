@@ -3,10 +3,19 @@ import { Media, defineConfig } from "tinacms";
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
+const lifeAndLearningPaths = [
+  "Academic Page.md",
+  "Early Years Page.md",
+  "primary-stage.md",
+  "Secondary School Page.md",
+];
+
 export default defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
   token: process.env.TINA_TOKEN!,
+  // clientId: "",
+  // token: "",
   build: {
     outputFolder: "admin",
     publicFolder: "public",
@@ -68,29 +77,213 @@ export default defineConfig({
             name: "heroImg",
             type: "image",
           },
-          {
-            name: "heading",
-            label: "Main Heading",
-            type: "rich-text",
-          },
-          {
-            name: "body",
-            label: "Body",
-            type: "rich-text",
-          },
+
           {
             name: "blocks",
             label: "Blocks",
             type: "object",
             list: true,
+            ui: {
+              visualSelector: true,
+            },
             templates: [
               {
-                name: "heroTitle",
-                label: "Hero Title",
+                name: "heading",
+                label: "Heading",
                 fields: [
                   {
-                    name: "message",
+                    name: "headingTitle",
+                    label: "Heading Title",
+                    type: "rich-text",
+                  },
+                  {
+                    name: "headingTitleColor",
+                    label: "Heading Title Color",
                     type: "string",
+                    ui: {
+                      component: "color",
+                    },
+                  },
+                  {
+                    name: "headingSubtitle",
+                    label: "Heading Subtitle",
+                    type: "string",
+                  },
+                  {
+                    name: "headingSubtitleColor",
+                    label: "Heading Subtitle Color",
+                    type: "string",
+                    ui: {
+                      component: "color",
+                    },
+                  },
+                ],
+              },
+              {
+                name: "text",
+                label: "Rich Text",
+                fields: [
+                  {
+                    name: "body",
+                    label: "Body",
+                    type: "rich-text",
+                  },
+                ],
+              },
+              {
+                name: "features",
+                label: "Features Section",
+                fields: [
+                  {
+                    name: "title",
+                    label: "Feature Title",
+                    type: "rich-text",
+                  },
+                  {
+                    name: "subtitle",
+                    label: "Feature Subtitle",
+                    type: "string",
+                  },
+                  {
+                    name: "featuresList",
+                    label: "Features List",
+                    type: "object",
+                    list: true,
+                    templates: [
+                      {
+                        name: "featureBox",
+                        label: "Feature Box",
+                        fields: [
+                          {
+                            name: "title",
+                            label: "Feature Title",
+                            type: "string",
+                          },
+                          {
+                            name: "color",
+                            label: "Number Color",
+                            type: "string",
+                            ui: {
+                              component: "color",
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "circles",
+                label: "Circles Section",
+                fields: [
+                  {
+                    name: "circlesTitle",
+                    label: "Circle Title",
+                    type: "string",
+                  },
+                  {
+                    name: "circlesList",
+                    label: "Circles List",
+                    type: "object",
+                    list: true,
+                    templates: [
+                      {
+                        name: "circle",
+                        label: "Circle",
+                        fields: [
+                          {
+                            name: "title",
+                            label: "Circle Title",
+                            type: "rich-text",
+                          },
+                          {
+                            name: "color",
+                            label: "Number Color",
+                            type: "string",
+                            ui: {
+                              component: "color",
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "learningAreas",
+                label: "Learning Areas",
+                fields: [
+                  {
+                    name: "areaTitle",
+                    label: "Area Title",
+                    type: "string",
+                  },
+                  {
+                    name: "areaList",
+                    label: "Area List",
+                    type: "object",
+                    list: true,
+                    templates: [
+                      {
+                        name: "item",
+                        label: "Item",
+                        fields: [
+                          {
+                            name: "title",
+                            label: "Title",
+                            type: "string",
+                          },
+                          {
+                            name: "color",
+                            label: "Background Color",
+                            type: "string",
+                            ui: {
+                              component: "color",
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "grid",
+                label: "Grid",
+                fields: [
+                  {
+                    name: "columnsCount",
+                    label: "Columns Count",
+                    type: "number",
+                  },
+                  {
+                    name: "gridList",
+                    label: "Grid List",
+                    type: "object",
+                    list: true,
+                    templates: [
+                      {
+                        name: "item",
+                        label: "Item",
+                        fields: [
+                          {
+                            name: "name",
+                            label: "Name",
+                            type: "string",
+                          },
+                          {
+                            name: "color",
+                            label: "Background Color",
+                            type: "string",
+                            ui: {
+                              component: "color",
+                            },
+                          },
+                        ],
+                      },
+                    ],
                   },
                 ],
               },
@@ -101,3 +294,13 @@ export default defineConfig({
     ],
   },
 });
+
+interface ColorConfig {
+  component: "color";
+  name: string;
+  label?: string;
+  description?: string;
+  colorFormat?: "hex" | "rgb"; // Defaults to "hex"
+  colors?: string[];
+  widget?: "sketch" | "block"; // Defaults to "sketch"
+}

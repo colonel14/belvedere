@@ -7,7 +7,9 @@ import School from "@/components/HomeComponents/School";
 import Footer from "@/components/Footer";
 import HomeAdmissions from "@/components/HomeComponents/HomeAdmissions";
 
-function Home() {
+import client from "@/tina/__generated__/client";
+
+async function Home() {
   return (
     <div id="homepage">
       <Navbar />

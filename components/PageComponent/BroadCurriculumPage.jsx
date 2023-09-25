@@ -32,7 +32,8 @@ function BroadCurriculumPage() {
           <span className="card__link-title-underline !after:bg-[#FFB842]">
             Early Years
           </span>{" "}
-          Foundation Stage overview
+          <br />
+          Foundation Stage <br /> overview
         </>
       ),
       description:
@@ -63,7 +64,8 @@ function BroadCurriculumPage() {
       grade: "Y7 to Sixth Form",
       title: (
         <>
-          <span className="card__link-title-underline">Secondary</span> School
+          <span className="card__link-title-underline">Secondary</span> <br />{" "}
+          School
         </>
       ),
       description:
@@ -77,7 +79,12 @@ function BroadCurriculumPage() {
     <div>
       <PageHero
         imageSrc="/broad-curriculum-hero.jpg"
-        title="A Broad Curriculum"
+        title={
+          <>
+            A Broad <br />
+            Curriculum
+          </>
+        }
         color="#44508D"
       />
 

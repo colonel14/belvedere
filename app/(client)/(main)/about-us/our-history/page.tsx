@@ -1,4 +1,5 @@
 import "@/styles/single-page.css";
+import client from "@/tina/__generated__/client";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 
@@ -11,9 +12,13 @@ export const metadata: Metadata = {
   title: "Our History",
 };
 export default async function OurHistory() {
+  const result = await client.queries.page({
+    relativePath: "Our History.md",
+  });
+
   return (
     <main>
-      <OurHistoryPage />
+      <OurHistoryPage {...result} />
     </main>
   );
 }

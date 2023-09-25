@@ -1,9 +1,13 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useTina } from "tinacms/dist/react";
 
-function HomeHero() {
+function HomeHero(props) {
+  const { data } = useTina(props);
   return (
     <div className="home__hero">
       <Image

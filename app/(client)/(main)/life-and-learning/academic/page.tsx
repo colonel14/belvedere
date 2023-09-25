@@ -13,7 +13,9 @@ export const metadata: Metadata = {
   title: "Academic",
 };
 export default async function Academic() {
-  const result = await client.queries.page({ relativePath: "home.md" });
+  const result = await client.queries.page({
+    relativePath: "Academic Page.md",
+  });
 
   return (
     <main>

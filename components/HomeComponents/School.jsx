@@ -42,7 +42,20 @@ function School() {
             type: "progressbar",
           }}
           modules={[Pagination]}
-          slidesPerView={"auto"}
+          breakpoints={{
+            991: {
+              slidesPerView: "auto",
+            },
+            767: {
+              width: 767,
+              slidesPerView: 2,
+            },
+            // when window width is >= 768px
+            479: {
+              width: 469,
+              slidesPerView: 1,
+            },
+          }}
           spaceBetween={20}
           className="home__school-swiper"
           onSwiper={(swiper) => {

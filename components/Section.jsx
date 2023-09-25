@@ -4,9 +4,10 @@ import { lifeLearningLinks } from "@/data";
 
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import PageLinksList from "./PageLinksList";
+import Heading from "./Heading";
 
 function Section({ data }) {
   useEffect(() => {
@@ -20,133 +21,162 @@ function Section({ data }) {
           <div className="flex flex-col-reverse lg:grid lg:grid-cols-12">
             <div className="col-span-8 app__section-left">
               <div data-aos="fade-animation" data-aos-duration="700">
-                <div
-                  className="section__heading"
-                  data-tina-field={tinaField(data.page, "heading")}
-                >
-                  <TinaMarkdown
-                    content={data.page.heading}
-                    components={{
-                      h4: (props) => (
-                        <h4 className="heading__subtitle" {...props} />
-                      ),
-                      h3: (props) => (
-                        <h3 className="heading__title" {...props} />
-                      ),
-                    }}
-                  />
-                </div>
-                {/* <Heading
-                title="Learning-Centered Educational Institution."
-                subtitle="Belvedere School, Cairo is a"
-              /> */}
-
-                <div data-tina-field={tinaField(data.page, "body")}>
-                  <TinaMarkdown
-                    content={data.page.body}
-                    components={{
-                      h1: (props) => <h1 {...props} />,
-                      h2: (props) => <h2 {...props} />,
-                      h3: (props) => <h3 {...props} />,
-                      p: (props) => <p className="page__text" {...props} />,
-                    }}
-                  />
-                </div>
+                <div data-tina-field={tinaField(data.page, "body")}></div>
               </div>
 
-              <div
-                id="features"
-                data-aos="fade-animation"
-                data-aos-duration="700"
-              >
-                <div className="features__heading">
-                  <h5 className="features__title">
-                    learner-centered education focuses on 3 key
-                    <br /> aspects about the learner
-                  </h5>
-                  <span className="features__subtitle">
-                    Each learner is seen as
-                  </span>
-                </div>
-                <div className="features__list">
-                  <div className="feature__box">
-                    <span className="feature__box-num">1</span>
-                    <p className="feature__box-text">
-                      Being unique <br /> in meaningful <br />
-                      ways
-                    </p>
-                  </div>
-                  <div className="feature__box">
-                    <span className="feature__box-num">2</span>
-                    <p className="feature__box-text">
-                      Having <br /> unbounded <br /> potential.
-                    </p>
-                  </div>
-                  <div className="feature__box">
-                    <span className="feature__box-num">3</span>
-                    <p className="feature__box-text">
-                      Having an <br /> innate desire <br /> to learn
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                id="cricles__map"
-                data-aos="fade-animation"
-                data-aos-duration="700"
-              >
-                <p className="palatino__text">Learners Centred Principles</p>
-                <div className="circles__list">
-                  <div className="circles__row-1">
-                    <div className="map__circle">
-                      <p>
-                        Let learners{" "}
-                        <span className="font-bold">construct</span> their path
-                      </p>
-                    </div>
-                    <div className="map__circle">
-                      <p>
-                        Encourage{" "}
-                        <span className="font-bold">multiple prespectives</span>
-                      </p>
-                    </div>
-                    <div className="map__circle">
-                      <p>
-                        Prompt learners to{" "}
-                        <span className="font-bold">
-                          think about their thinking
-                        </span>
-                      </p>
-                    </div>
-                    <div className="map__circle">
-                      <p>
-                        <span className="font-bold">Evaluate </span>
-                        learner’s thinking process
-                      </p>
-                    </div>
-                  </div>
-                  <div className="circles__row-2">
-                    <div className="map__circle">
-                      <p>
-                        <span className="font-bold">Coach</span> learners <br />{" "}
-                        to expert performance
-                      </p>
-                    </div>
-                    <div className="map__circle">
-                      <p>
-                        Situate learning in
-                        <span className="font-bold">real-life activities</span>
-                      </p>
-                    </div>
-                    <div className="map__circle">
-                      <p>
-                        Guide learners to
-                        <span className="font-bold"> think like an expert</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {data?.page?.blocks?.map((block, i) => {
+                switch (block.__typename) {
+                  case "PageBlocksHeading":
+                    return (
+                      <React.Fragment key={i}>
+                        <div
+                          className="section__heading"
+                          data-tina-field={tinaField(data.page, `blocks[${i}]`)}
+                        >
+                          <Heading
+                            title={
+                              <TinaMarkdown
+                                content={block.headingTitle}
+                                components={{
+                                  p: (props) => <p {...props} />,
+                                }}
+                              />
+                            }
+                            titleColor={block.headingTitleColor}
+                            subtitle={block.headingSubtitle}
+                            subtitleColor={block.headingSubtitleColor}
+                          />
+                        </div>
+                      </React.Fragment>
+                    );
+                  case "PageBlocksText":
+                    return (
+                      <React.Fragment key={i}>
+                        <div
+                          data-tina-field={tinaField(data.page, `blocks[${i}]`)}
+                        >
+                          <TinaMarkdown
+                            content={block.body}
+                            components={{
+                              h1: (props) => <h1 {...props} />,
+                              h2: (props) => <h2 {...props} />,
+                              h3: (props) => <h3 {...props} />,
+                              p: (props) => (
+                                <p className="page__text" {...props} />
+                              ),
+                            }}
+                          />
+                        </div>
+                      </React.Fragment>
+                    );
+                  case "PageBlocksFeatures":
+                    return (
+                      <React.Fragment key={i}>
+                        <div
+                          id="features"
+                          data-aos="fade-animation"
+                          data-aos-duration="700"
+                          data-tina-field={tinaField(data.page, `blocks[${i}]`)}
+                        >
+                          <div className="features__heading">
+                            <h5 className="features__title">
+                              {" "}
+                              <TinaMarkdown
+                                content={block.title}
+                                components={{
+                                  p: (props) => <p {...props} />,
+                                }}
+                              />
+                            </h5>
+                            <span className="features__subtitle">
+                              {block.subtitle}
+                            </span>
+                          </div>
+                          <div className="features__list">
+                            {block?.featuresList?.map((item, idx) => (
+                              <div
+                                key={idx}
+                                className="feature__box"
+                                style={{ "--accent-color": item.color }}
+                              >
+                                <span className="feature__box-num">
+                                  {idx + 1}
+                                </span>
+                                <p className="feature__box-text">
+                                  {item.title}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    );
+
+                  case "PageBlocksCircles":
+                    return (
+                      <React.Fragment key={i}>
+                        <div
+                          id="cricles__map"
+                          data-aos="fade-animation"
+                          data-aos-duration="700"
+                          data-tina-field={tinaField(data.page, `blocks[${i}]`)}
+                        >
+                          <p className="palatino__text">{block.circlesTitle}</p>
+                          <div className="circles__list">
+                            <div className="circles__row-1">
+                              {block?.circlesList
+                                .slice(0, 4)
+                                .map((circle, circleIndex) => (
+                                  <div
+                                    key={circleIndex}
+                                    className="map__circle"
+                                    style={{ "--accent-color": circle.color }}
+                                  >
+                                    <p>
+                                      <TinaMarkdown
+                                        content={circle.title}
+                                        components={{
+                                          p: (props) => <p {...props} />,
+                                          strong: (props) => (
+                                            <strong {...props} />
+                                          ),
+                                        }}
+                                      />
+                                    </p>
+                                  </div>
+                                ))}
+                            </div>
+                            <div className="circles__row-2">
+                              {block?.circlesList
+                                .slice(4, 8)
+                                .map((circle, circleIndex) => (
+                                  <div
+                                    key={circleIndex}
+                                    className="map__circle"
+                                    style={{ "--accent-color": circle.color }}
+                                  >
+                                    <p>
+                                      <TinaMarkdown
+                                        content={circle.title}
+                                        components={{
+                                          p: (props) => <p {...props} />,
+                                          strong: (props) => (
+                                            <strong {...props} />
+                                          ),
+                                        }}
+                                      />
+                                    </p>
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    );
+                  default:
+                    return null;
+                }
+              })}
             </div>
             <div className="col-span-4 app__section-right">
               <PageLinksList links={lifeLearningLinks} />

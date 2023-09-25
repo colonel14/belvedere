@@ -3,13 +3,13 @@ function LearningArea({ title, list = [] }) {
     <div className="learning__area">
       <h4 className="learning__area-title">{title}</h4>
       <div className="learning__area-list">
-        {list.map((item, idx) => (
+        {list?.map((item, idx) => (
           <div
             key={idx}
             className="learning__area-box"
-            style={{ backgroundColor: item.bgColor }}
+            style={{ backgroundColor: item.color }}
           >
-            {item.name}
+            {item.title}
           </div>
         ))}
       </div>

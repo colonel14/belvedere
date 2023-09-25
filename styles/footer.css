@@ -93,7 +93,7 @@ footer {
 }
 
 @media screen and (max-width: 991px) {
-  .footer__top {
+  #footer__top {
     display: block;
   }
   .footer__top-row {
@@ -101,6 +101,18 @@ footer {
   }
   .footer__socials {
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #footer__bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 479px) {
+  footer {
+    padding: 30px 25px 0;
   }
 }
