@@ -154,7 +154,7 @@ function ValuesAndEthosPage(props) {
                   switch (block.__typename) {
                     case "PageBlocksGrid":
                       return (
-                        <React.Fragment key={i}>
+                        <div className="values__ethos-grid" key={i}>
                           <div
                             data-tina-field={tinaField(
                               data.page,
@@ -166,7 +166,7 @@ function ValuesAndEthosPage(props) {
                               list={block.gridList || list}
                             />
                           </div>
-                        </React.Fragment>
+                        </div>
                       );
                     default:
                       return null;

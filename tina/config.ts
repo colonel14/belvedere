@@ -30,8 +30,15 @@ export default defineConfig({
     collections: [
       {
         name: "post",
-        label: "Posts",
+        label: "News",
         path: "content/posts",
+        defaultItem: () => {
+          return {
+            // Return a default title and the current date as the default date
+            title: "New news",
+            date: new Date().toISOString(),
+          };
+        },
         fields: [
           {
             type: "string",
@@ -41,10 +48,95 @@ export default defineConfig({
             required: true,
           },
           {
+            type: "string",
+            name: "excerpt",
+            label: "Excerpt",
+          },
+          {
+            name: "newsImg",
+            label: "News Image",
+            type: "image",
+          },
+          {
+            name: "category",
+            label: "Category",
+            type: "reference",
+            collections: ["category"],
+          },
+          {
             type: "rich-text",
             name: "body",
             label: "Body",
             isBody: true,
+          },
+          {
+            label: "Date",
+            name: "date",
+            type: "datetime",
+          },
+        ],
+        ui: {
+          // This is an DEMO router. You can remove this to fit your site
+          router: ({ document }) => `/latest-news/${document._sys.filename}`,
+        },
+      },
+      {
+        name: "event",
+        label: "Events",
+        path: "content/events",
+        defaultItem: () => {
+          return {
+            // Return a default title and the current date as the default date
+            title: "New Eevnt",
+            date: new Date().toISOString(),
+          };
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "excerpt",
+            label: "Excerpt",
+          },
+          {
+            name: "eventImg",
+            label: "Event Image",
+            type: "image",
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+          {
+            label: "Date",
+            name: "date",
+            type: "datetime",
+          },
+        ],
+        ui: {
+          // This is an DEMO router. You can remove this to fit your site
+          router: ({ document }) => `/events/${document._sys.filename}`,
+        },
+      },
+      {
+        name: "category",
+        label: "Category",
+        path: "content/categories",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Category Name",
+            isTitle: true,
+            required: true,
           },
         ],
         ui: {
@@ -52,7 +144,74 @@ export default defineConfig({
           router: ({ document }) => `/demo/blog/${document._sys.filename}`,
         },
       },
+      {
+        name: "home",
+        label: "Home",
+        path: "content/home",
+        format: "md",
+        ui: {
+          router: (props) => {
+            if (props.document._sys.relativePath == "home.md") {
+              return "/";
+            }
+            return props.document._sys.filename;
+          },
+        },
+        fields: [
+          {
+            name: "title",
+            label: "Hero Title",
+            type: "string",
+          },
+          {
+            label: "Hero Image",
+            name: "heroImg",
+            type: "image",
+          },
 
+          {
+            name: "blocks",
+            label: "Blocks",
+            type: "object",
+            list: true,
+            ui: {
+              visualSelector: true,
+            },
+            templates: [
+              {
+                name: "hero",
+                label: "Hero",
+                fields: [
+                  {
+                    name: "title",
+                    label: "Heading Title",
+                    type: "rich-text",
+                  },
+                  {
+                    name: "heroDesc",
+                    label: "Hero Text",
+                    type: "string",
+                    ui: {
+                      component: "textarea",
+                    },
+                  },
+
+                  {
+                    name: "linkTitle",
+                    label: "Link Title",
+                    type: "string",
+                  },
+                  {
+                    name: "linkUrl",
+                    label: "Link Url",
+                    type: "string",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
       {
         name: "page",
         label: "Pages",

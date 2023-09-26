@@ -1,19 +1,40 @@
-import { eventsList } from "@/data";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import NewsCard from "../NewsCard";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Search } from "lucide-react";
+import { useTina } from "tinacms/dist/react";
+import { useDebounce } from "@/hooks/useDebounce";
+import qs from "query-string";
 
-function LatestNewsPage() {
+function LatestNewsPage(props) {
+  const { data } = useTina(props);
+  const eventsList = data.eventConnection.edges;
+
+  const router = useRouter();
+  const params = useSearchParams();
+
+  const searchQuery = params.get("q");
+  const [searchValue, setSearchValue] = useState(searchQuery || "");
+  const deboundedValue = useDebounce(searchValue, 500);
+
+  useEffect(() => {
+    const query = {
+      q: deboundedValue,
+    };
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipEmptyString: true, skipNull: true }
+    );
+
+    router.push(url);
+  }, [deboundedValue, router]);
+
   return (
     <div>
       <div className="secondary__hero">
@@ -41,14 +62,19 @@ function LatestNewsPage() {
                 name="search"
                 placeholder="Search.."
                 type="text"
+                onChange={(e) => setSearchValue(e.target.value)}
               />
               <Search className="app__input-icon" />
             </div>
           </div>
           <div className="news__list">
-            {eventsList.map((item) => (
-              <NewsCard key={item.id} item={item} isEvent={true} />
-            ))}
+            {eventsList.map((edge) => {
+              const eventItem = edge?.node;
+              if (!eventItem) return null;
+              return (
+                <NewsCard key={eventItem.id} item={eventItem} isEvent={true} />
+              );
+            })}
           </div>
         </div>
       </div>

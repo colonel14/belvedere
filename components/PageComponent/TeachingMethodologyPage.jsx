@@ -80,7 +80,31 @@ function TeachingMethodologyPage(props) {
                 {data?.page?.blocks?.map((block, i) => {
                   switch (block.__typename) {
                     case "PageBlocksHeading":
-                      return (
+                      return i > 0 ? (
+                        <div className="secondary__heading" key={i}>
+                          <div
+                            className="section__heading"
+                            data-tina-field={tinaField(
+                              data.page,
+                              `blocks[${i}]`
+                            )}
+                          >
+                            <Heading
+                              title={
+                                <TinaMarkdown
+                                  content={block.headingTitle}
+                                  components={{
+                                    p: (props) => <p {...props} />,
+                                  }}
+                                />
+                              }
+                              titleColor={block.headingTitleColor}
+                              subtitle={block.headingSubtitle}
+                              subtitleColor={block.headingSubtitleColor}
+                            />
+                          </div>
+                        </div>
+                      ) : (
                         <React.Fragment key={i}>
                           <div
                             className="section__heading"

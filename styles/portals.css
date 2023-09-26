@@ -30,6 +30,12 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;
+  transition: all 0.4s;
+}
+
+.submit__button:hover {
+  background: #2b52aa;
+  color: #fff;
 }
 
 .portals__link {

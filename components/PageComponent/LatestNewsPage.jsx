@@ -1,5 +1,8 @@
-import { newsList } from "@/data";
-import React from "react";
+"use client";
+
+// import { newsList } from "@/data";
+import React, { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import NewsCard from "../NewsCard";
 
 import {
@@ -12,8 +15,79 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
+import { useTina } from "tinacms/dist/react";
+import qs from "query-string";
+import { useDebounce } from "@/hooks/useDebounce";
 
-function LatestNewsPage() {
+function LatestNewsPage({ result, categoriesResult }) {
+  const { data } = useTina(result);
+  const { data: categories } = useTina(categoriesResult);
+
+  const newsList = data.postConnection.edges;
+  const categoriesList = categories.categoryConnection.edges;
+
+  const router = useRouter();
+  const params = useSearchParams();
+
+  const category = params.get("category");
+  const searchQuery = params.get("q");
+  const [searchValue, setSearchValue] = useState(searchQuery || "");
+  const deboundedValue = useDebounce(searchValue, 500);
+
+  // const handleChange = useCallback(
+  //   (data) => {
+  //     let currentQuery = {};
+  //     if (params) {
+  //       currentQuery = qs.parse(params.toString());
+  //     }
+  //     const updatedQuery = {
+  //       ...currentQuery,
+  //       q: deboundedValue,
+  //       category: data,
+  //     };
+
+  //     // If category already selected and exists on the url params delete it
+  //     if (params?.get("category") == data) {
+  //       delete updatedQuery.category;
+  //     }
+
+  //     const url = qs.stringifyUrl(
+  //       {
+  //         url: window.location.href,
+  //         query: updatedQuery,
+  //       },
+  //       { skipEmptyString: true, skipNull: true }
+  //     );
+
+  //     router.push(url);
+  //   },
+  //   [deboundedValue, params, router]
+  // );
+
+  const handleChange = (category) => {
+    const query = { category };
+    const url = qs.stringifyUrl({
+      url: window.location.href,
+      query,
+    });
+
+    router.push(url);
+  };
+  useEffect(() => {
+    const query = {
+      q: deboundedValue,
+      category: category,
+    };
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipEmptyString: true, skipNull: true }
+    );
+
+    router.push(url);
+  }, [deboundedValue, router, category]);
   return (
     <div>
       <div className="secondary__hero">
@@ -43,30 +117,37 @@ function LatestNewsPage() {
                 name="search"
                 placeholder="Search.."
                 type="text"
+                onChange={(e) => setSearchValue(e.target.value)}
               />
               <Search className="app__input-icon" />
             </div>
 
-            <Select>
+            <Select onValueChange={handleChange}>
               <SelectTrigger className="select__input">
                 <SelectValue placeholder="Select Category..." />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Cagegory 1</SelectLabel>
-                  <SelectItem value="Cagegory 1">Cagegory 1</SelectItem>
-                  <SelectItem value="Cagegory 2">Cagegory 2</SelectItem>
-                  <SelectItem value="Cagegory 3">Cagegory 3</SelectItem>
-                  <SelectItem value="Cagegory 4">Cagegory 4</SelectItem>
-                  <SelectItem value="Cagegory 5">Cagegory 5</SelectItem>
+                  <SelectLabel>Category</SelectLabel>
+                  {categoriesList.map((edge) => {
+                    const category = edge?.node;
+                    if (!category) return null;
+                    return (
+                      <SelectItem key={category.id} value={category.title}>
+                        {category.title}
+                      </SelectItem>
+                    );
+                  })}
                 </SelectGroup>
               </SelectContent>
             </Select>
           </div>
           <div className="news__list">
-            {newsList.map((item) => (
-              <NewsCard key={item.id} item={item} />
-            ))}
+            {newsList.map((edge) => {
+              const newsItem = edge?.node;
+              if (!newsItem) return null;
+              return <NewsCard key={newsItem.id} item={newsItem} />;
+            })}
           </div>
         </div>
       </div>

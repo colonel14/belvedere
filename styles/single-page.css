@@ -141,6 +141,9 @@
 
   margin-top: 6rem;
 }
+.values__ethos-grid .grid__list {
+  margin-top: 3rem;
+}
 
 .grid__list-box {
   display: flex;
@@ -161,6 +164,9 @@
   margin-bottom: 3.3rem;
 }
 
+.secondary__heading .section__heading {
+  margin: 4.5rem 0 2rem;
+}
 .values__ethos-heading .section__heading {
   max-width: 275px;
 }
@@ -169,7 +175,8 @@
   display: inline;
 }
 .values__ethos-heading .section__heading .heading__subtitle {
-  display: inline;
+  display: inline-block;
+  line-height: 30px;
 }
 .heading__bloquote {
   margin-bottom: 3.3rem;
@@ -185,8 +192,9 @@
   width: 157px;
   height: 120px;
   position: absolute;
-  top: -85px;
-  right: -166px;
+  top: -72px;
+  right: -88px;
+  z-index: -1;
 }
 .heading__bloquote .section__heading {
   margin-bottom: 10px;
@@ -242,7 +250,7 @@
 }
 
 .app__section {
-  padding-bottom: 14.3rem;
+  padding-bottom: 7rem;
 }
 
 .app__section-left {
@@ -674,8 +682,8 @@
   .heading__bloquote::after {
     width: 104px;
     height: 87px;
-    top: -67px;
-    right: -98px;
+    top: -41px;
+    right: -48px;
   }
 }
 
@@ -846,7 +854,6 @@
     font-size: 20px;
   }
   .heading__bloquote::after {
-    display: none;
   }
 
   .keywords span {

@@ -66,8 +66,12 @@
   margin-top: 30px;
   color: #2b52aa;
   border-color: #2b52aa;
+  transition: all 0.4s;
 }
-
+.home__hero-content .app__button:hover {
+  background: #2b52aa;
+  color: #fff;
+}
 /* History Section */
 
 .home__history {
@@ -341,10 +345,18 @@
   font-weight: 700;
   line-height: 43px;
 }
+
+.home__admissions-heading .text__underline::after {
+  height: 15px;
+  bottom: 8px;
+  width: 95%;
+}
 .home__admissions-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+
+  gap: 28px;
+  row-gap: 20px;
 }
 .home__admissions-links .admission__link {
   width: 260px;
@@ -373,6 +385,7 @@
 .home__admissions-image {
   position: relative;
   height: 100%;
+  top: -10px;
 }
 
 @media screen and (max-width: 991px) {

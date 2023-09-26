@@ -32,7 +32,11 @@ function ArtAndDesignPage(props) {
     <div>
       <PageHero
         imageSrc="/art-design-hero.jpg"
-        title="Art & Design"
+        title={
+          <>
+            Art & <br /> Design
+          </>
+        }
         color="#FFB842"
       />
       <section className="app__section">

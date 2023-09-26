@@ -34,7 +34,12 @@ function VisionAndMissionPage(props) {
     <div>
       <PageHero
         imageSrc="/vision-mission-hero.jpg"
-        title="Vision & Mission"
+        title={
+          <>
+            Vision & <br />
+            Mission
+          </>
+        }
         color="#FB491C"
       />
       <section className="app__section">

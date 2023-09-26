@@ -10,10 +10,12 @@ import HomeAdmissions from "@/components/HomeComponents/HomeAdmissions";
 import client from "@/tina/__generated__/client";
 
 async function Home() {
+  const result = await client.queries.home({ relativePath: "home.md" });
+
   return (
     <div id="homepage">
       <Navbar />
-      <HomeHero />
+      <HomeHero {...result} />
       <HomeHistory />
       <HomeLifeAndLearning />
       <School />

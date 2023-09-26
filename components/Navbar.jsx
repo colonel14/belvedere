@@ -181,7 +181,7 @@ const Navbar = () => {
 
             <ul className="app__navbar-bottom_menu">
               <li>
-                <Link href="/">View our prospectus</Link>
+                <Link href="/">Our prospectus</Link>
               </li>
             </ul>
           </ul>
