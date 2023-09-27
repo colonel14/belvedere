@@ -164,18 +164,23 @@
   position: relative;
   height: 90vh;
   margin-top: 100px;
+  overflow: hidden;
 }
 .home__life .container {
   height: 100%;
 }
-.home__life::before {
+.home__life-heading{
+  position: relative;
+}
+.home__life-heading::before {
   content: "";
   position: absolute;
-  top: 10px;
-  left: 0;
-  height: 257px;
-  width: 18vw;
+  bottom: 75%;
+  left: -20vw;
+  height: 21vh;
+  width: 28vw;
   background: #6ac45b;
+  z-index: -1;
 }
 
 .home__life-inner {
@@ -224,6 +229,7 @@
 /* School Section */
 .home__school {
   padding: 100px 0;
+  overflow: hidden;
 }
 .home__school-heading {
   max-width: 1000px;
@@ -252,7 +258,9 @@
   margin: 0 0 0 auto;
   padding-left: 2rem;
 }
-
+.home__school-slider .home__school-swiper{
+  overflow: visible;
+}
 .school_slider-controls {
   display: flex;
   align-items: center;
@@ -388,6 +396,12 @@
   top: -10px;
 }
 
+@media screen and (max-width: 1440px){
+  .home__life-heading::before{
+    left: -2rem;
+    width: 175px;
+  }
+}
 @media screen and (max-width: 991px) {
   .home__hero-content {
     max-width: 90vw;
@@ -436,17 +450,10 @@
   .home__life-info {
     position: relative;
   }
-  .home__life-info::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: -1rem;
-    max-width: 18vw;
-    min-width: 200px;
-    top: -88px;
-    height: 121px;
-    background: #6ac45b;
-    z-index: -1;
+  .home__life-heading::before {
+
+    max-width: 330px;
+    height: 15vh;
   }
 
   .home__life-image {
@@ -471,7 +478,7 @@
     height: 282px;
   }
   .home__school-slider {
-    padding: 0 1rem;
+    padding: 0 0 0 1rem;
   }
   .slide__title {
     font-size: 25px;
